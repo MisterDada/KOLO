@@ -1,14 +1,18 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import ViewImage from "../../assets/images/Viewimage.svg";
+import Grass from "../../assets/images/grass.svg";
 
 const Viewone = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-      <View style={styles.loader}>
-        <Text>Hello</Text>
-      </View>
-      <View style={{ paddingHorizontal: 25 }}>
+      <View style={styles.loader}></View>
+      <View
+        style={{
+          paddingHorizontal: 25,
+          marginTop: 50,
+        }}
+      >
         <View>
           <Text
             style={{
@@ -28,14 +32,34 @@ const Viewone = () => {
               marginTop: 20,
               lineHeight: 24,
               maxWidth: "80%",
+              opacity: 0.7,
             }}
           >
             Personalized saving vaults for your goals — rent, travel, gadgets,
             and more+
           </Text>
         </View>
-        <View>
-          <ViewImage width={120} height={40} />
+        <View
+          style={{
+            marginTop: 38,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ViewImage style={{ marginBottom: -35 }} />
+          <Grass style={{ zIndex: 10 }} />
+        </View>
+        <View style={{ alignItems: "flex-end", marginTop: 70, gap: 20 }}>
+          {/* This View should be moved to the onBoarding component later*/}
+
+          <Pressable style={styles.button}>
+            <Text style={{ color: "white", fontSize: 16, fontWeight: 700 }}>
+              Next
+            </Text>
+          </Pressable>
+          <Text style={{ fontSize: 16, color: "#3673FF", fontWeight: 700 }}>
+            I already have a Kolo+ account
+          </Text>
         </View>
       </View>
     </SafeAreaView>
@@ -47,7 +71,19 @@ export default Viewone;
 const styles = StyleSheet.create({
   loader: {
     height: 30,
-    backgroundColor: "blue",
     paddingHorizontal: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
+  },
+  button: {
+    backgroundColor: "#333333",
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    borderRadius: 100,
+    height: 60,
+    width: 100,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
