@@ -29,7 +29,7 @@ const OnboardingScreen = ({ navigation }: any) => {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
     } else {
       console.log("Onboarding done");
-      // navigation.replace("Home");
+      navigation.navigate("Email");
     }
   };
 
