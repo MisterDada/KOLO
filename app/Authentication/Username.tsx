@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -15,6 +15,21 @@ import {
 import Back from "../../assets/images/Back.svg";
 
 const Username = () => {
+  const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+  const [borderColor, setBorderColor] = useState("white");
+
+  const checkUsername = () => {
+    if (username === "") {
+      setError("! Username cannot be empty");
+      setBorderColor("#F47575");
+    } else {
+      setUsername("");
+      setError("");
+      setBorderColor("white");
+    }
+  };
+
   const navigation = useNavigation();
 
   return (
@@ -45,8 +60,9 @@ const Username = () => {
                 placeholderTextColor="#BDBDBD"
                 secureTextEntry
                 style={{
-                  borderWidth: 0,
+                  borderWidth: 1,
                   borderRadius: 20,
+                  borderColor: borderColor,
                   padding: 15,
                   fontSize: 16,
                   color: "#333333",
@@ -56,10 +72,13 @@ const Username = () => {
                   height: 60,
                 }}
               />
+              <Text style={{ color: "#F47575" }}>{error}</Text>
             </View>
             <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
               <Pressable
-                onPress={() => {}}
+                onPress={() => {
+                  checkUsername();
+                }}
                 style={{
                   backgroundColor: "#333333",
                   paddingVertical: 20,

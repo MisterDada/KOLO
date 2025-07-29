@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -21,6 +21,24 @@ type RootStackParamList = {
 };
 
 const Password = () => {
+  const [password, setPassword] = useState("");
+  const [borderColor, setBorderColor] = useState("white");
+  const [error, setError] = useState("");
+
+  const passwordRegex = /.{12,}$/; // Regex for a 12 character password
+
+  const checkPassword = () => {
+    if (!passwordRegex.test(password) || password === "") {
+      setError("! Invalid Password");
+      setBorderColor("#F47575");
+    } else {
+      setPassword("");
+      setError("");
+      setBorderColor("white");
+      navigation.navigate("Username");
+    }
+  };
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -51,9 +69,12 @@ const Password = () => {
                 placeholder="Enter a secure password"
                 placeholderTextColor="#BDBDBD"
                 secureTextEntry
+                value={password}
+                onChangeText={setPassword}
                 style={{
-                  borderWidth: 0,
+                  borderWidth: 1,
                   borderRadius: 20,
+                  borderColor: borderColor,
                   padding: 15,
                   fontSize: 16,
                   color: "#333333",
@@ -63,11 +84,12 @@ const Password = () => {
                   height: 60,
                 }}
               />
+              <Text style={{ color: "#F47575" }}>{error}</Text>
             </View>
             <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
               <Pressable
                 onPress={() => {
-                  navigation.navigate("Username");
+                  checkPassword();
                 }}
                 style={{
                   backgroundColor: "#333333",

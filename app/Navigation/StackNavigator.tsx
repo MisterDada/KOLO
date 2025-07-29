@@ -10,8 +10,12 @@ const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Onboarding"
-      screenOptions={{ headerShown: false }}
+      initialRouteName="Password"
+      screenOptions={{
+        headerShown: false,
+        animation: "fade_from_bottom",
+        gestureEnabled: false,
+      }}
     >
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Email" component={Email} />

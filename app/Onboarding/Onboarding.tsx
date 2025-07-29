@@ -28,7 +28,6 @@ const OnboardingScreen = ({ navigation }: any) => {
     if (currentIndex < onboardingScreens.length - 1) {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      console.log("Onboarding done");
       navigation.navigate("Email");
     }
   };

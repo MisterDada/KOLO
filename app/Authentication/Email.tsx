@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -21,6 +21,24 @@ type RootStackParamList = {
 };
 
 const Email = () => {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [borderColor, setBorderColor] = useState("white");
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const checkEmail = () => {
+    if (!emailRegex.test(email) || email == "") {
+      setError("! Invalid Email");
+      setBorderColor("#F47575");
+    } else {
+      setEmail("");
+      setError("");
+      setBorderColor("white");
+      navigation.navigate("Password");
+    }
+  };
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
@@ -48,8 +66,12 @@ const Email = () => {
               <TextInput
                 placeholder="Enter your preffered email"
                 placeholderTextColor="#BDBDBD"
+                keyboardType="email-address"
+                value={email}
+                onChangeText={setEmail}
                 style={{
-                  borderWidth: 0,
+                  borderWidth: 1,
+                  borderColor: borderColor,
                   borderRadius: 20,
                   padding: 15,
                   fontSize: 16,
@@ -60,11 +82,12 @@ const Email = () => {
                   height: 60,
                 }}
               />
+              <Text style={{ color: "#F47575" }}>{error}</Text>
             </View>
             <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
               <Pressable
                 onPress={() => {
-                  navigation.navigate("Password");
+                  checkEmail();
                 }}
                 style={{
                   backgroundColor: "#333333",
