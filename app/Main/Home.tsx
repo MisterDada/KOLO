@@ -1,11 +1,19 @@
 import React from "react";
-import { Pressable, StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import EyeIcon from "../../assets/images/Eye.svg";
 import SettingsIcon from "../../assets/images/Setting.svg";
 import Vault from "../Components/Vault";
 
 const Home = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
+    <ScrollView style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
       <StatusBar barStyle={"dark-content"} />
       <View style={styles.header}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -25,7 +33,7 @@ const Home = () => {
         <SettingsIcon />
       </View>
 
-      <View style={{ marginBottom: 33 }}>
+      <View style={{ marginBottom: 10 }}>
         <View style={styles.accountInfo}>
           <View style={{ flexDirection: "row", gap: 10, paddingBottom: 20 }}>
             <View
@@ -33,11 +41,14 @@ const Home = () => {
                 padding: 11,
                 backgroundColor: "#F3F3F3",
                 borderRadius: 100,
+                flexDirection: "row",
+                gap: 5,
               }}
             >
               <Text>Hide balance</Text>
+              <EyeIcon />
             </View>
-            <View
+            {/* <View
               style={{
                 padding: 11,
                 backgroundColor: "#F3F3F3",
@@ -45,7 +56,7 @@ const Home = () => {
               }}
             >
               <Text>NGN</Text>
-            </View>
+            </View> */}
           </View>
           <Text style={{ color: "#3D9CFB", fontSize: 32, fontWeight: 600 }}>
             NGN655,000.00
@@ -79,7 +90,7 @@ const Home = () => {
         </View>
       </View>
       <Vault />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -99,7 +110,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 30,
     backgroundColor: "white",
-    borderRadius: 30,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
     zIndex: 5,
   },
   operations: {

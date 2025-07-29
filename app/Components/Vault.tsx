@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import CalendarIcon from "../../assets/images/VaultIcons/Calendar.svg";
 import TargetIcon from "../../assets/images/VaultIcons/Target.svg";
 
@@ -29,34 +29,43 @@ const Vault = () => {
       target: "N450,000",
       date: "12 August, 2025",
     },
+    {
+      id: 4,
+      name: "Birthday Gift",
+      description: "Bag for debrah",
+      amountSaved: "N150,000",
+      target: "N450,000",
+      date: "10 September, 2025",
+    },
+    {
+      id: 5,
+      name: "New Car",
+      description: "BMW M4",
+      amountSaved: "N650,000",
+      target: "N45,000,000",
+      date: "1 January, 2027",
+    },
   ];
 
   return (
-    <FlatList
-      data={vaults}
-      keyExtractor={(item) => item.id.toString()}
-      ListHeaderComponent={
+    <View style={styles.vault}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 30,
+          marginTop: 20,
+        }}
+      >
+        <Text style={{ fontSize: 18, fontWeight: 600 }}>Your Vaults</Text>
+        <Text style={{ fontSize: 14, color: "#3D9CFB", fontWeight: 600 }}>
+          See all
+        </Text>
+      </View>
+      {vaults.map((item) => (
         <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 30,
-            marginTop: 20, // optional
-          }}
-        >
-          <Text style={{ fontSize: 18, fontWeight: 600 }}>Your Vaults</Text>
-          <Text style={{ fontSize: 14, color: "#3D9CFB", fontWeight: 600 }}>
-            See all
-          </Text>
-        </View>
-      }
-      contentContainerStyle={{
-        paddingHorizontal: 20,
-        paddingBottom: 40,
-      }}
-      renderItem={({ item }) => (
-        <View
+          key={item.id}
           style={{
             flex: 1,
             marginBottom: 20,
@@ -101,8 +110,8 @@ const Vault = () => {
             </View>
           </View>
         </View>
-      )}
-    />
+      ))}
+    </View>
   );
 };
 
