@@ -40,13 +40,14 @@ const StackNavigator = () => {
         <AuthStack.Screen name="Email" component={Email} />
         <AuthStack.Screen name="Password" component={Password} />
         <AuthStack.Screen name="Username" component={Username} />
+        <AuthStack.Screen name="TabNavigator" component={TabNavigator} />
       </AuthStack.Navigator>
     );
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //change all this later to use Async storage
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //change all this later to use Async storage
   const checkUser = async () => {
-    const user = true;
+    const user = false;
     if (user) {
       setIsLoggedIn(true);
     }

@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
 import {
   Keyboard,
@@ -14,6 +15,11 @@ import {
 } from "react-native";
 import Back from "../../assets/images/Back.svg";
 
+type RootStackParamList = {
+  // Define the navigation type for the Password screen
+  TabNavigator: undefined;
+};
+
 const Username = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
@@ -27,11 +33,12 @@ const Username = () => {
       setUsername("");
       setError("");
       setBorderColor("white");
+      navigation.navigate("TabNavigator");
     }
   };
 
-  const navigation = useNavigation();
-
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -58,6 +65,8 @@ const Username = () => {
               <TextInput
                 placeholder="Enter your name"
                 placeholderTextColor="#BDBDBD"
+                value={username}
+                onChangeText={setUsername}
                 secureTextEntry
                 style={{
                   borderWidth: 1,

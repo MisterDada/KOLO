@@ -29,7 +29,9 @@ const Password = () => {
 
   const checkPassword = () => {
     if (!passwordRegex.test(password) || password === "") {
-      setError("! Invalid Password");
+      setError(
+        "! Password should not be empty and must be at least 12 characters long"
+      );
       setBorderColor("#F47575");
     } else {
       setPassword("");

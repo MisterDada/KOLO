@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import EyeIcon from "../../assets/images/Eye.svg";
 import SettingsIcon from "../../assets/images/Setting.svg";
+import ProfileIcon from "../../assets/images/TabNavigator/Profile.svg";
 import Vault from "../Components/Vault";
 
 const Home = () => {
@@ -16,10 +17,9 @@ const Home = () => {
     <ScrollView style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
       <StatusBar barStyle={"dark-content"} />
       <View style={styles.header}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          {/* change this to use an actual profile icon later */}
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
           <View style={{ width: 35, height: 35 }}>
-            <Text style={{ fontSize: 35 }}>🙍‍♂️</Text>
+            <ProfileIcon width={35} height={35} />
           </View>
           <View>
             <Text style={{ color: "#333333", fontSize: 16, fontWeight: 500 }}>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
     paddingTop: 80,
-    paddingBottom: 30,
+    paddingBottom: 10,
     backgroundColor: "white",
   },
   accountInfo: {
