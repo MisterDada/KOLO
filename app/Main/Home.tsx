@@ -1,10 +1,12 @@
 import React from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, StatusBar, StyleSheet, Text, View } from "react-native";
 import SettingsIcon from "../../assets/images/Setting.svg";
+import Vault from "../Components/Vault";
 
 const Home = () => {
   return (
     <View style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
+      <StatusBar barStyle={"dark-content"} />
       <View style={styles.header}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           {/* change this to use an actual profile icon later */}
@@ -22,7 +24,8 @@ const Home = () => {
         </View>
         <SettingsIcon />
       </View>
-      <ScrollView contentContainerStyle={{ flex: 1 }}>
+
+      <View style={{ marginBottom: 33 }}>
         <View style={styles.accountInfo}>
           <View style={{ flexDirection: "row", gap: 10, paddingBottom: 20 }}>
             <View
@@ -74,47 +77,8 @@ const Home = () => {
             </Pressable>
           </View>
         </View>
-        <View
-          style={{
-            backgroundColor: "#DEF6CD",
-            height: 62,
-            borderBottomRightRadius: 25,
-            borderBottomLeftRadius: 25,
-            zIndex: -1,
-            marginTop: -30,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingHorizontal: 20,
-            alignItems: "flex-end",
-            paddingBottom: 10,
-          }}
-        >
-          <Text style={{ color: "#5AAC20", fontSize: 13, opacity: 0.6 }}>
-            Money saved last month
-          </Text>
-          <Text>N144,000</Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: "#CDE5FE",
-            height: 62,
-            borderBottomRightRadius: 25,
-            borderBottomLeftRadius: 25,
-            zIndex: -2,
-            marginTop: -30,
-            justifyContent: "space-between",
-            paddingHorizontal: 20,
-            flexDirection: "row",
-            alignItems: "flex-end",
-            paddingBottom: 10,
-          }}
-        >
-          <Text style={{ color: "#3D9CFB", fontSize: 13, opacity: 0.6 }}>
-            This month's goals
-          </Text>
-          <Text>N249,000</Text>
-        </View>
-      </ScrollView>
+      </View>
+      <Vault />
     </View>
   );
 };
