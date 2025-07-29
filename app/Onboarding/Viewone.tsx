@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-// import ViewImage from "../../assets/images/View1.svg";
+import ViewImage from "../../assets/images/Viewimage.svg";
 
 const Viewone = () => {
   return (
@@ -34,7 +34,9 @@ const Viewone = () => {
             and more+
           </Text>
         </View>
-        <View>{/* <ViewImage /> */}</View>
+        <View>
+          <ViewImage width={120} height={40} />
+        </View>
       </View>
     </SafeAreaView>
   );
