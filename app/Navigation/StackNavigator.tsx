@@ -1,26 +1,68 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Email from "../Authentication/Email";
 import Password from "../Authentication/Password";
 import Username from "../Authentication/Username";
+import Home from "../Main/Home";
 import OnboardingScreen from "../Onboarding/Onboarding";
 
 const Stack = createNativeStackNavigator();
+const InsideStack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
 
 const StackNavigator = () => {
+  const InsideStackNavigator = () => {
+    return (
+      <InsideStack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+          animation: "fade_from_bottom",
+          gestureEnabled: false,
+        }}
+      >
+        <InsideStack.Screen name="Home" component={Home} />
+      </InsideStack.Navigator>
+    );
+  };
+
+  const AuthStackNavigator = () => {
+    return (
+      <AuthStack.Navigator
+        initialRouteName="Onboarding"
+        screenOptions={{
+          headerShown: false,
+          animation: "fade_from_bottom",
+          gestureEnabled: false,
+        }}
+      >
+        <AuthStack.Screen name="Onboarding" component={OnboardingScreen} />
+        <AuthStack.Screen name="Email" component={Email} />
+        <AuthStack.Screen name="Password" component={Password} />
+        <AuthStack.Screen name="Username" component={Username} />
+      </AuthStack.Navigator>
+    );
+  };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //change all this later to use Async storage
+  const checkUser = async () => {
+    const user = true;
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  };
+
+  useEffect(() => {
+    checkUser();
+  }, []);
+
   return (
-    <Stack.Navigator
-      initialRouteName="Password"
-      screenOptions={{
-        headerShown: false,
-        animation: "fade_from_bottom",
-        gestureEnabled: false,
-      }}
-    >
-      <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-      <Stack.Screen name="Email" component={Email} />
-      <Stack.Screen name="Password" component={Password} />
-      <Stack.Screen name="Username" component={Username} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {isLoggedIn ? (
+        <Stack.Screen name="Home" component={InsideStackNavigator} />
+      ) : (
+        <Stack.Screen name="Auth" component={AuthStackNavigator} />
+      )}
     </Stack.Navigator>
   );
 };
