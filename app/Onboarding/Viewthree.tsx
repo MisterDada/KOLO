@@ -1,10 +1,10 @@
 import React from "react";
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 import View3image from "../../assets/images/View3.svg";
 
 const Viewone = () => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <View>
       <StatusBar barStyle="default" />
       <View style={styles.loader}></View>
       <View
@@ -49,7 +49,7 @@ const Viewone = () => {
           <View3image />
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

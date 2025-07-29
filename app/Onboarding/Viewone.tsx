@@ -1,11 +1,11 @@
 import React from "react";
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 import ViewImage from "../../assets/images/Viewimage.svg";
 import Grass from "../../assets/images/grass.svg";
 
 const Viewone = () => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <View>
       <StatusBar barStyle="default" />
       <View style={styles.loader}></View>
       <View
@@ -52,7 +52,7 @@ const Viewone = () => {
           <Grass style={{ zIndex: 10 }} />
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

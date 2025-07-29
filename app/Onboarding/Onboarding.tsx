@@ -49,17 +49,29 @@ const OnboardingScreen = ({ navigation }: any) => {
       <View
         style={{
           alignItems: "flex-end",
-          gap: 20,
+          gap: 10,
           paddingHorizontal: 20,
+          paddingBottom: 70,
         }}
       >
         <Pressable onPress={scrollToNext} style={styles.button}>
           <Text style={{ color: "white", fontSize: 16, fontWeight: 700 }}>
-            {currentIndex === onboardingScreens.length - 1 ? "Done" : "Next"}
+            {currentIndex === onboardingScreens.length - 1
+              ? "Create your account"
+              : "Next"}
           </Text>
         </Pressable>
-        <Text style={{ fontSize: 16, color: "#3673FF", fontWeight: 700 }}>
-          I already have a Kolo+ account
+        <Text
+          style={{
+            fontSize: 16,
+            color: "#3673FF",
+            fontWeight: 700,
+            opacity: 0.8,
+          }}
+        >
+          {currentIndex === onboardingScreens.length - 1
+            ? ""
+            : "I already have a Kolo account"}
         </Text>
       </View>
     </SafeAreaView>
@@ -75,7 +87,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     borderRadius: 100,
     height: 60,
-    width: 100,
     justifyContent: "center",
     alignItems: "center",
   },
