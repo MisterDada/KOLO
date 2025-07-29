@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import Email from "../Authentication/Email";
 import Password from "../Authentication/Password";
 import Username from "../Authentication/Username";
-import Home from "../Main/Home";
 import OnboardingScreen from "../Onboarding/Onboarding";
+import TabNavigator from "./TabNavigator";
 
 const Stack = createNativeStackNavigator();
 const InsideStack = createNativeStackNavigator();
@@ -14,14 +14,14 @@ const StackNavigator = () => {
   const InsideStackNavigator = () => {
     return (
       <InsideStack.Navigator
-        initialRouteName="Home"
+        initialRouteName="TabNavigator"
         screenOptions={{
           headerShown: false,
           animation: "fade_from_bottom",
           gestureEnabled: false,
         }}
       >
-        <InsideStack.Screen name="Home" component={Home} />
+        <InsideStack.Screen name="TabNavigator" component={TabNavigator} />
       </InsideStack.Navigator>
     );
   };

@@ -25,8 +25,8 @@ const Vault = () => {
       id: 3,
       name: "New Laptop",
       description: "Macbook Pro M4",
-      amountSaved: "N15,000",
-      target: "N450,000",
+      amountSaved: "N850,000",
+      target: "N1,500,000",
       date: "12 August, 2025",
     },
     {
@@ -56,6 +56,7 @@ const Vault = () => {
           alignItems: "center",
           marginBottom: 30,
           marginTop: 20,
+          paddingHorizontal: 15,
         }}
       >
         <Text style={{ fontSize: 18, fontWeight: 600 }}>Your Vaults</Text>

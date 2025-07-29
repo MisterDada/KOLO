@@ -48,15 +48,6 @@ const Home = () => {
               <Text>Hide balance</Text>
               <EyeIcon />
             </View>
-            {/* <View
-              style={{
-                padding: 11,
-                backgroundColor: "#F3F3F3",
-                borderRadius: 100,
-              }}
-            >
-              <Text>NGN</Text>
-            </View> */}
           </View>
           <Text style={{ color: "#3D9CFB", fontSize: 32, fontWeight: 600 }}>
             NGN655,000.00
