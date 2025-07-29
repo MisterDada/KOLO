@@ -1,7 +1,3 @@
-{
-  /* */
-}
-
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import React from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -25,11 +21,11 @@ export default function TabNavigator() {
 
   const { width } = Dimensions.get("window");
 
-  const tabBarWidth = width - 48; // 24 left and 24 right padding
+  const tabBarWidth = width - 100; // 75 left and 75 right padding
   const tabBarHeight = 67;
   const tabBarBottomMargin =
     tabItemBottomPadding > 0 ? tabItemBottomPadding : 21;
-  const tabWidth = tabBarWidth / 4;
+  const tabWidth = tabBarWidth / 5;
 
   return (
     <View style={styles.tabBarContainer}>
@@ -40,10 +36,10 @@ export default function TabNavigator() {
           tabBarIndicatorStyle: {
             position: "absolute",
             height: tabBarHeight - 12,
-            width: tabWidth - 12,
+            width: tabWidth - 10,
             backgroundColor: "#3D9CFB1A",
             marginBottom: 6,
-            marginLeft: 6,
+            marginLeft: 5,
             borderRadius: 40,
           },
           tabBarIndicatorContainerStyle: {
@@ -52,7 +48,7 @@ export default function TabNavigator() {
           tabBarStyle: {
             width: tabBarWidth,
             height: tabBarHeight,
-            marginLeft: 24,
+            marginLeft: 50,
             borderRadius: 40,
             position: "absolute",
             bottom: tabBarBottomMargin,
@@ -60,6 +56,7 @@ export default function TabNavigator() {
             shadowColor: "gray",
             shadowOpacity: 0.4,
             shadowRadius: 4,
+            alignItems: "center",
           },
         }}
       >
@@ -67,8 +64,8 @@ export default function TabNavigator() {
           name="Home"
           component={Home}
           options={{
-            tabBarIcon: () => {
-              return <HomeIcon />;
+            tabBarIcon: ({ focused }) => {
+              return <HomeIcon color={focused ? "#3D9CFB" : "#afafafff"} />;
             },
           }}
         />
@@ -77,8 +74,8 @@ export default function TabNavigator() {
           name="Save"
           component={Home}
           options={{
-            tabBarIcon: () => {
-              return <SaveIcon />;
+            tabBarIcon: ({ focused }) => {
+              return <SaveIcon color={focused ? "#3D9CFB" : "#333333"} />;
             },
           }}
         />
@@ -86,8 +83,8 @@ export default function TabNavigator() {
           name="Create"
           component={Profile}
           options={{
-            tabBarIcon: () => {
-              return <CreateIcon />;
+            tabBarIcon: ({ focused }) => {
+              return <CreateIcon color={focused ? "#3D9CFB" : "#333333"} />;
             },
           }}
         />
@@ -95,8 +92,8 @@ export default function TabNavigator() {
           name="Friends"
           component={Profile}
           options={{
-            tabBarIcon: () => {
-              return <FriendsIcon />;
+            tabBarIcon: ({ focused }) => {
+              return <FriendsIcon color={focused ? "#3D9CFB" : "#333333"} />;
             },
           }}
         />
@@ -104,8 +101,8 @@ export default function TabNavigator() {
           name="Profile"
           component={Profile}
           options={{
-            tabBarIcon: () => {
-              return <ProfileIcon />;
+            tabBarIcon: ({ focused }) => {
+              return <ProfileIcon color={focused ? "#3D9CFB" : "#333333"} />;
             },
           }}
         />
