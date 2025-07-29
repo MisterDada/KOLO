@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Pressable,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
 import ViewImage from "../../assets/images/Viewimage.svg";
 import Grass from "../../assets/images/grass.svg";
 
@@ -57,18 +50,6 @@ const Viewone = () => {
         >
           <ViewImage style={{ marginBottom: -35 }} />
           <Grass style={{ zIndex: 10 }} />
-        </View>
-        <View style={{ alignItems: "flex-end", marginTop: 70, gap: 20 }}>
-          {/* This View should be moved to the onBoarding component later*/}
-
-          <Pressable style={styles.button}>
-            <Text style={{ color: "white", fontSize: 16, fontWeight: 700 }}>
-              Next
-            </Text>
-          </Pressable>
-          <Text style={{ fontSize: 16, color: "#3673FF", fontWeight: 700 }}>
-            I already have a Kolo+ account
-          </Text>
         </View>
       </View>
     </SafeAreaView>

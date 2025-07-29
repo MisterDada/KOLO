@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Pressable,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
 import View2card from "../../assets/images/View2card.svg";
 import View2 from "../../assets/images/Viewtwo.svg";
 
@@ -55,18 +48,6 @@ const Viewtwo = () => {
         >
           <View2 style={{ zIndex: 10, position: "absolute" }} />
           <View2card />
-        </View>
-        <View style={{ alignItems: "flex-end", marginTop: 40, gap: 20 }}>
-          {/* This View should be moved to the onBoarding component later*/}
-
-          <Pressable style={styles.button}>
-            <Text style={{ color: "white", fontSize: 16, fontWeight: 700 }}>
-              Next
-            </Text>
-          </Pressable>
-          <Text style={{ fontSize: 16, color: "#3673FF", fontWeight: 700 }}>
-            I already have a Kolo+ account
-          </Text>
         </View>
       </View>
     </SafeAreaView>
