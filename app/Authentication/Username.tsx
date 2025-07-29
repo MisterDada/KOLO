@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   Keyboard,
@@ -14,6 +15,8 @@ import {
 import Back from "../../assets/images/Back.svg";
 
 const Username = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -23,7 +26,7 @@ const Username = () => {
         >
           <View style={styles.container}>
             <View style={{ gap: 20 }}>
-              <Back />
+              <Back onPress={navigation.goBack} />
               <Text
                 style={{
                   fontSize: 40,

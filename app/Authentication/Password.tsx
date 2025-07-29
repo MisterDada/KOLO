@@ -1,3 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import {
   Keyboard,
@@ -13,7 +15,15 @@ import {
 } from "react-native";
 import Back from "../../assets/images/Back.svg";
 
+type RootStackParamList = {
+  // Define the navigation type for the Password screen
+  Username: undefined;
+};
+
 const Password = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -23,7 +33,7 @@ const Password = () => {
         >
           <View style={styles.container}>
             <View style={{ gap: 20 }}>
-              <Back />
+              <Back onPress={navigation.goBack} />
               <Text
                 style={{
                   fontSize: 40,
@@ -56,7 +66,9 @@ const Password = () => {
             </View>
             <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
               <Pressable
-                onPress={() => {}}
+                onPress={() => {
+                  navigation.navigate("Username");
+                }}
                 style={{
                   backgroundColor: "#333333",
                   paddingVertical: 20,
