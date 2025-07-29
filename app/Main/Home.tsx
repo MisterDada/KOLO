@@ -1,14 +1,156 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import SettingsIcon from "../../assets/images/Setting.svg";
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
+      <View style={styles.header}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          {/* change this to use an actual profile icon later */}
+          <View style={{ width: 35, height: 35 }}>
+            <Text style={{ fontSize: 35 }}>🙍‍♂️</Text>
+          </View>
+          <View>
+            <Text style={{ color: "#333333", fontSize: 16, fontWeight: 500 }}>
+              Welcome,
+            </Text>
+            <Text style={{ color: "#333333", fontSize: 18, fontWeight: 600 }}>
+              Michael Okogwu
+            </Text>
+          </View>
+        </View>
+        <SettingsIcon />
+      </View>
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
+        <View style={styles.accountInfo}>
+          <View style={{ flexDirection: "row", gap: 10, paddingBottom: 20 }}>
+            <View
+              style={{
+                padding: 11,
+                backgroundColor: "#F3F3F3",
+                borderRadius: 100,
+              }}
+            >
+              <Text>Hide balance</Text>
+            </View>
+            <View
+              style={{
+                padding: 11,
+                backgroundColor: "#F3F3F3",
+                borderRadius: 100,
+              }}
+            >
+              <Text>NGN</Text>
+            </View>
+          </View>
+          <Text style={{ color: "#3D9CFB", fontSize: 32, fontWeight: 600 }}>
+            NGN655,000.00
+          </Text>
+          <View style={{ flexDirection: "row", gap: 10, paddingTop: 29 }}>
+            <Pressable
+              style={[
+                styles.operations,
+                {
+                  borderColor: "#3D9CFB",
+                  borderWidth: 1,
+                  backgroundColor: "#3d9cfb23",
+                },
+              ]}
+            >
+              <Text style={[styles.operationsText, { color: "#3D9CFB" }]}>
+                <Text style={styles.operationIcons}>+</Text> Add
+              </Text>
+            </Pressable>
+            <Pressable style={styles.operations}>
+              <Text style={styles.operationsText}>
+                <Text style={styles.operationIcons}>↗</Text> Send
+              </Text>
+            </Pressable>
+            <Pressable style={styles.operations}>
+              <Text style={styles.operationsText}>
+                <Text style={styles.operationIcons}>↙</Text> Withdraw
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: "#DEF6CD",
+            height: 62,
+            borderBottomRightRadius: 25,
+            borderBottomLeftRadius: 25,
+            zIndex: -1,
+            marginTop: -30,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingHorizontal: 20,
+            alignItems: "flex-end",
+            paddingBottom: 10,
+          }}
+        >
+          <Text style={{ color: "#5AAC20", fontSize: 13, opacity: 0.6 }}>
+            Money saved last month
+          </Text>
+          <Text>N144,000</Text>
+        </View>
+        <View
+          style={{
+            backgroundColor: "#CDE5FE",
+            height: 62,
+            borderBottomRightRadius: 25,
+            borderBottomLeftRadius: 25,
+            zIndex: -2,
+            marginTop: -30,
+            justifyContent: "space-between",
+            paddingHorizontal: 20,
+            flexDirection: "row",
+            alignItems: "flex-end",
+            paddingBottom: 10,
+          }}
+        >
+          <Text style={{ color: "#3D9CFB", fontSize: 13, opacity: 0.6 }}>
+            This month's goals
+          </Text>
+          <Text>N249,000</Text>
+        </View>
+      </ScrollView>
     </View>
   );
 };
 
 export default Home;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingTop: 80,
+    paddingBottom: 30,
+    backgroundColor: "white",
+  },
+  accountInfo: {
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    backgroundColor: "white",
+    borderRadius: 30,
+    zIndex: 5,
+  },
+  operations: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "#F3F3F3",
+    borderRadius: 100,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  operationIcons: {
+    fontSize: 18,
+    marginRight: 10,
+  },
+  operationsText: {
+    fontSize: 14,
+  },
+});
