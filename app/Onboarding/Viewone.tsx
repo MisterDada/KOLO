@@ -1,11 +1,19 @@
 import React from "react";
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import ViewImage from "../../assets/images/Viewimage.svg";
 import Grass from "../../assets/images/grass.svg";
 
 const Viewone = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      <StatusBar barStyle="default" />
       <View style={styles.loader}></View>
       <View
         style={{
@@ -36,7 +44,8 @@ const Viewone = () => {
             }}
           >
             Personalized saving vaults for your goals — rent, travel, gadgets,
-            and more+
+            and more
+            <Text style={{ color: "#3673FF", fontStyle: "italic" }}>+</Text>
           </Text>
         </View>
         <View
