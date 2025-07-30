@@ -4,6 +4,7 @@ import Email from "../Authentication/Email";
 import Password from "../Authentication/Password";
 import Username from "../Authentication/Username";
 import OnboardingScreen from "../Onboarding/Onboarding";
+import SplashScreen from "../SplashScreen";
 import TabNavigator from "./TabNavigator";
 
 const Stack = createNativeStackNavigator();
@@ -11,41 +12,51 @@ const InsideStack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
 
 const StackNavigator = () => {
-  const InsideStackNavigator = () => {
-    return (
-      <InsideStack.Navigator
-        initialRouteName="TabNavigator"
-        screenOptions={{
-          headerShown: false,
-          animation: "fade_from_bottom",
-          gestureEnabled: false,
-        }}
-      >
-        <InsideStack.Screen name="TabNavigator" component={TabNavigator} />
-      </InsideStack.Navigator>
-    );
-  };
+  const InsideStackNavigator = () => (
+    <InsideStack.Navigator
+      initialRouteName="TabNavigator"
+      screenOptions={{
+        headerShown: false,
+        animation: "fade_from_bottom",
+        gestureEnabled: false,
+      }}
+    >
+      <InsideStack.Screen name="TabNavigator" component={TabNavigator} />
+    </InsideStack.Navigator>
+  );
 
-  const AuthStackNavigator = () => {
-    return (
-      <AuthStack.Navigator
-        initialRouteName="Onboarding"
-        screenOptions={{
-          headerShown: false,
-          animation: "fade_from_bottom",
-          gestureEnabled: false,
-        }}
-      >
-        <AuthStack.Screen name="Onboarding" component={OnboardingScreen} />
-        <AuthStack.Screen name="Email" component={Email} />
-        <AuthStack.Screen name="Password" component={Password} />
-        <AuthStack.Screen name="Username" component={Username} />
-        <AuthStack.Screen name="TabNavigator" component={TabNavigator} />
-      </AuthStack.Navigator>
-    );
-  };
+  const AuthStackNavigator = () => (
+    <AuthStack.Navigator
+      initialRouteName="Onboarding"
+      screenOptions={{
+        headerShown: false,
+        animation: "fade_from_bottom",
+        gestureEnabled: false,
+      }}
+    >
+      <AuthStack.Screen name="Onboarding" component={OnboardingScreen} />
+      <AuthStack.Screen name="Email" component={Email} />
+      <AuthStack.Screen name="Password" component={Password} />
+      <AuthStack.Screen name="Username" component={Username} />
+      <AuthStack.Screen name="TabNavigator" component={TabNavigator} />
+    </AuthStack.Navigator>
+  );
 
   const [isLoggedIn, setIsLoggedIn] = useState(false); //change all this later to use Async storage
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    checkUser();
+  }, []);
+
   const checkUser = async () => {
     const user = false;
     if (user) {
@@ -53,10 +64,11 @@ const StackNavigator = () => {
     }
   };
 
-  useEffect(() => {
-    checkUser();
-  }, []);
+  if (showSplash) {
+    return <SplashScreen />;
+  }
 
+  // Render your navigation stack after splash
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {isLoggedIn ? (

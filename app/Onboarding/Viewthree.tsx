@@ -24,7 +24,8 @@ const Viewone = () => {
               maxWidth: "80%",
             }}
           >
-            Unlock financial freedom with Kolo
+            Unlock financial freedom with{" "}
+            <Text style={{ fontStyle: "italic" }}>Kolo</Text>
             <Text style={{ color: "#3673FF", fontStyle: "italic" }}>+</Text>
           </Text>
           <Text
