@@ -64,54 +64,60 @@ const Vault = () => {
           See all
         </Text>
       </View>
-      {vaults.map((item) => (
-        <View
-          key={item.id}
-          style={{
-            flex: 1,
-            marginBottom: 20,
-            borderWidth: 0.5,
-            borderRadius: 20,
-            paddingVertical: 10,
-            paddingHorizontal: 20,
-            backgroundColor: "white",
-            borderColor: "#EDEDED",
-          }}
-        >
-          <Text
+      {vaults.length === 0 ? (
+        <Text>No savings plan yet</Text>
+      ) : (
+        vaults.map((item) => (
+          <View
+            key={item.id}
             style={{
-              color: "#333333",
-              opacity: 0.3,
-              fontSize: 18,
+              flex: 1,
               marginBottom: 20,
+              borderWidth: 0.5,
+              borderRadius: 20,
+              paddingVertical: 10,
+              paddingHorizontal: 20,
+              backgroundColor: "white",
+              borderColor: "#EDEDED",
             }}
           >
-            {item.name}
-          </Text>
-          <Text style={{ marginBottom: 5 }}>{item.description}</Text>
-          <Text style={{ color: "#333333", fontSize: 20, marginBottom: 10 }}>
-            {item.amountSaved} Saved
-          </Text>
-          <View style={{ flexDirection: "row", gap: 20, alignItems: "center" }}>
-            <View
-              style={{ flexDirection: "row", gap: 5, alignItems: "center" }}
+            <Text
+              style={{
+                color: "#333333",
+                opacity: 0.3,
+                fontSize: 18,
+                marginBottom: 20,
+              }}
             >
-              <TargetIcon />
-              <Text style={{ color: "#333333", fontSize: 15 }}>
-                {item.target}
-              </Text>
-            </View>
+              {item.name}
+            </Text>
+            <Text style={{ marginBottom: 5 }}>{item.description}</Text>
+            <Text style={{ color: "#333333", fontSize: 20, marginBottom: 10 }}>
+              {item.amountSaved} Saved
+            </Text>
             <View
-              style={{ flexDirection: "row", gap: 5, alignItems: "center" }}
+              style={{ flexDirection: "row", gap: 20, alignItems: "center" }}
             >
-              <CalendarIcon />
-              <Text style={{ color: "#333333", fontSize: 15, opacity: 0.6 }}>
-                {item.date}
-              </Text>
+              <View
+                style={{ flexDirection: "row", gap: 5, alignItems: "center" }}
+              >
+                <TargetIcon />
+                <Text style={{ color: "#333333", fontSize: 15 }}>
+                  {item.target}
+                </Text>
+              </View>
+              <View
+                style={{ flexDirection: "row", gap: 5, alignItems: "center" }}
+              >
+                <CalendarIcon />
+                <Text style={{ color: "#333333", fontSize: 15, opacity: 0.6 }}>
+                  {item.date}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-      ))}
+        ))
+      )}
     </View>
   );
 };
