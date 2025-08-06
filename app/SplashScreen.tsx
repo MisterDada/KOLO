@@ -17,7 +17,6 @@ const SplashScreen = () => {
             fontWeight: 600,
             fontSize: 60,
             color: "#333333",
-            marginBottom: 70,
           }}
         >
           Kolo <Text style={{ fontStyle: "italic", color: "#3673FF" }}>+</Text>

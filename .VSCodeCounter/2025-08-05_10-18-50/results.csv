@@ -1,0 +1,41 @@
+"filename", "language", "JSON with Comments", "Markdown", "JSON", "JavaScript", "TypeScript", "TypeScript JSX", "XML", "comment", "blank", "total"
+"c:\Users\DELL\Desktop\KOLO\README.md", "Markdown", 0, 31, 0, 0, 0, 0, 0, 0, 20, 51
+"c:\Users\DELL\Desktop\KOLO\app.json", "JSON", 0, 0, 42, 0, 0, 0, 0, 0, 1, 43
+"c:\Users\DELL\Desktop\KOLO\app\Authentication\Email.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 118, 0, 0, 9, 127
+"c:\Users\DELL\Desktop\KOLO\app\Authentication\Password.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 121, 0, 1, 9, 131
+"c:\Users\DELL\Desktop\KOLO\app\Authentication\Username.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 118, 0, 1, 7, 126
+"c:\Users\DELL\Desktop\KOLO\app\Components\Vault.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 124, 0, 0, 5, 129
+"c:\Users\DELL\Desktop\KOLO\app\Main\Home.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 119, 0, 0, 5, 124
+"c:\Users\DELL\Desktop\KOLO\app\Main\Profile.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 11, 0, 0, 4, 15
+"c:\Users\DELL\Desktop\KOLO\app\Navigation\StackNavigator.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 71, 0, 1, 12, 84
+"c:\Users\DELL\Desktop\KOLO\app\Navigation\TabNavigator.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 113, 0, 0, 9, 122
+"c:\Users\DELL\Desktop\KOLO\app\Onboarding\Onboarding.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 84, 0, 0, 9, 93
+"c:\Users\DELL\Desktop\KOLO\app\Onboarding\Viewone.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 76, 0, 0, 4, 80
+"c:\Users\DELL\Desktop\KOLO\app\Onboarding\Viewthree.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 74, 0, 0, 4, 78
+"c:\Users\DELL\Desktop\KOLO\app\Onboarding\Viewtwo.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 74, 0, 0, 4, 78
+"c:\Users\DELL\Desktop\KOLO\app\SplashScreen.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 4, 35
+"c:\Users\DELL\Desktop\KOLO\app\_layout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 4, 0, 0, 2, 6
+"c:\Users\DELL\Desktop\KOLO\app\index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 14, 0, 0, 2, 16
+"c:\Users\DELL\Desktop\KOLO\assets\images\Back.svg", "XML", 0, 0, 0, 0, 0, 0, 3, 0, 1, 4
+"c:\Users\DELL\Desktop\KOLO\assets\images\Eye.svg", "XML", 0, 0, 0, 0, 0, 0, 4, 0, 1, 5
+"c:\Users\DELL\Desktop\KOLO\assets\images\Setting.svg", "XML", 0, 0, 0, 0, 0, 0, 6, 0, 1, 7
+"c:\Users\DELL\Desktop\KOLO\assets\images\SplashScreen\SplashImage.svg", "XML", 0, 0, 0, 0, 0, 0, 9, 0, 1, 10
+"c:\Users\DELL\Desktop\KOLO\assets\images\TabNavigator\Create.svg", "XML", 0, 0, 0, 0, 0, 0, 7, 0, 1, 8
+"c:\Users\DELL\Desktop\KOLO\assets\images\TabNavigator\Friends.svg", "XML", 0, 0, 0, 0, 0, 0, 7, 0, 1, 8
+"c:\Users\DELL\Desktop\KOLO\assets\images\TabNavigator\Home.svg", "XML", 0, 0, 0, 0, 0, 0, 3, 0, 1, 4
+"c:\Users\DELL\Desktop\KOLO\assets\images\TabNavigator\Profile.svg", "XML", 0, 0, 0, 0, 0, 0, 7, 0, 1, 8
+"c:\Users\DELL\Desktop\KOLO\assets\images\TabNavigator\Savings.svg", "XML", 0, 0, 0, 0, 0, 0, 7, 0, 1, 8
+"c:\Users\DELL\Desktop\KOLO\assets\images\VaultIcons\Calendar.svg", "XML", 0, 0, 0, 0, 0, 0, 9, 0, 1, 10
+"c:\Users\DELL\Desktop\KOLO\assets\images\VaultIcons\Target.svg", "XML", 0, 0, 0, 0, 0, 0, 12, 0, 1, 13
+"c:\Users\DELL\Desktop\KOLO\assets\images\View2card.svg", "XML", 0, 0, 0, 0, 0, 0, 48, 0, 1, 49
+"c:\Users\DELL\Desktop\KOLO\assets\images\View3.svg", "XML", 0, 0, 0, 0, 0, 0, 76, 0, 1, 77
+"c:\Users\DELL\Desktop\KOLO\assets\images\Viewimage.svg", "XML", 0, 0, 0, 0, 0, 0, 19, 0, 1, 20
+"c:\Users\DELL\Desktop\KOLO\assets\images\Viewtwo.svg", "XML", 0, 0, 0, 0, 0, 0, 68, 0, 1, 69
+"c:\Users\DELL\Desktop\KOLO\assets\images\grass.svg", "XML", 0, 0, 0, 0, 0, 0, 16, 0, 1, 17
+"c:\Users\DELL\Desktop\KOLO\declarations.d.ts", "TypeScript", 0, 0, 0, 0, 6, 0, 0, 1, 1, 8
+"c:\Users\DELL\Desktop\KOLO\eslint.config.js", "JavaScript", 0, 0, 0, 8, 0, 0, 0, 1, 2, 11
+"c:\Users\DELL\Desktop\KOLO\metro.config.js", "JavaScript", 0, 0, 0, 10, 0, 0, 0, 0, 5, 15
+"c:\Users\DELL\Desktop\KOLO\package-lock.json", "JSON", 0, 0, 13543, 0, 0, 0, 0, 0, 1, 13544
+"c:\Users\DELL\Desktop\KOLO\package.json", "JSON", 0, 0, 52, 0, 0, 0, 0, 0, 1, 53
+"c:\Users\DELL\Desktop\KOLO\tsconfig.json", "JSON with Comments", 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"Total", "-", 11, 31, 13637, 18, 6, 1152, 301, 5, 137, 15298
