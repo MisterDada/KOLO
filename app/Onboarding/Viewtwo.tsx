@@ -1,9 +1,44 @@
-import React from "react";
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useRef } from "react";
+import {
+  Animated,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import View2card from "../../assets/images/View2card.svg";
 import View2 from "../../assets/images/Viewtwo.svg";
 
-const Viewtwo = () => {
+const Viewtwo = ({
+  currentIndex,
+  screenIndex,
+}: {
+  currentIndex: number;
+  screenIndex: number;
+}) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(100)).current;
+
+  useEffect(() => {
+    if (currentIndex === screenIndex) {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 4000,
+        useNativeDriver: true,
+      }).start();
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 2000,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      // Reset animation when not visible
+      fadeAnim.setValue(0);
+      slideAnim.setValue(100);
+    }
+  }, [currentIndex, screenIndex, fadeAnim, slideAnim]);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <StatusBar barStyle="default" />
@@ -15,7 +50,7 @@ const Viewtwo = () => {
         }}
       >
         <View>
-          <Text
+          <Animated.Text
             style={{
               fontSize: 40,
               fontWeight: 500,
@@ -23,10 +58,12 @@ const Viewtwo = () => {
               lineHeight: 48,
               letterSpacing: 0,
               maxWidth: "80%",
+              opacity: fadeAnim,
+              transform: [{ translateY: slideAnim }],
             }}
           >
             Friends Keep You Accountable.
-          </Text>
+          </Animated.Text>
           <Text
             style={{
               fontSize: 16,

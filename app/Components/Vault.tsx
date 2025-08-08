@@ -130,5 +130,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
+    paddingBottom: 100,
   },
 });

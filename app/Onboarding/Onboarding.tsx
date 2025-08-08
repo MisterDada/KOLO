@@ -13,7 +13,11 @@ import Viewthree from "./Viewthree";
 import Viewtwo from "./Viewtwo";
 const { width } = Dimensions.get("window");
 
-const onboardingScreens = [<Viewone />, <Viewtwo />, <Viewthree />];
+const onboardingScreens = [
+  (props: any) => <Viewone {...props} />,
+  (props: any) => <Viewtwo {...props} />,
+  (props: any) => <Viewthree {...props} />,
+];
 
 const OnboardingScreen = ({ navigation }: any) => {
   const flatListRef = useRef<FlatList>(null);
@@ -36,7 +40,11 @@ const OnboardingScreen = ({ navigation }: any) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <FlatList
         data={onboardingScreens}
-        renderItem={({ item }) => <View style={{ width }}>{item}</View>}
+        renderItem={({ item, index }) => (
+          <View style={{ width }}>
+            {item({ currentIndex, screenIndex: index })}
+          </View>
+        )}
         keyExtractor={(_, index) => index.toString()}
         horizontal
         pagingEnabled
