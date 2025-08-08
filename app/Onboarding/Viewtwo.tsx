@@ -24,27 +24,26 @@ const Viewtwo = ({
     if (currentIndex === screenIndex) {
       Animated.timing(slideAnim1, {
         toValue: 0,
-        duration: 800,
+        duration: 500,
         useNativeDriver: true,
       }).start();
 
       Animated.timing(slideAnim2, {
         toValue: 0,
-        duration: 1300,
+        duration: 700,
         useNativeDriver: true,
       }).start();
 
       Animated.timing(slideAnim3, {
         toValue: 0,
-        duration: 1800,
+        duration: 900,
         useNativeDriver: true,
       }).start();
     } else {
-      // Right now, I commented the lines out so the animation only shows up the first time
       // Reset animation when not visible
-      // slideAnim1.setValue(100);
-      // slideAnim2.setValue(100);
-      // slideAnim3.setValue(100);
+      slideAnim1.setValue(100);
+      slideAnim2.setValue(100);
+      slideAnim3.setValue(100);
     }
   }, [currentIndex, screenIndex, slideAnim1]);
 

@@ -3,6 +3,7 @@ import React from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import Create from "../Main/Create";
 import Home from "../Main/Home";
 import Profile from "../Main/Profile";
 
@@ -81,7 +82,7 @@ export default function TabNavigator() {
         />
         <Tab.Screen
           name="Create"
-          component={Profile}
+          component={Create}
           options={{
             tabBarIcon: ({ focused }) => {
               return <CreateIcon color={focused ? "#3D9CFB" : "#333333"} />;
