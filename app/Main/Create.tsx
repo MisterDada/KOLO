@@ -10,7 +10,8 @@ import {
 } from "react-native";
 
 const Create = () => {
-  const [vaultName, setVaultName] = useState("");
+  const [vaultName, setVaultName] = useState<string>("");
+  const [goalAmount, setGoalAmount] = useState<string>("");
 
   return (
     <View style={{ flex: 1, backgroundColor: "#D9D9D9" }}>
@@ -62,7 +63,6 @@ const Create = () => {
             <TextInput
               placeholder="What are you saving for?"
               placeholderTextColor="#BDBDBD"
-              secureTextEntry
               value={vaultName}
               onChangeText={setVaultName}
               style={{
@@ -94,9 +94,9 @@ const Create = () => {
             <TextInput
               placeholder="Enter Amount"
               placeholderTextColor="#BDBDBD"
-              secureTextEntry
-              value={vaultName}
-              onChangeText={setVaultName}
+              keyboardType="numeric"
+              value={goalAmount}
+              onChangeText={setGoalAmount}
               style={{
                 borderRadius: 10,
                 //   borderColor: borderColor,
