@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import View2card from "../../assets/images/View2card.svg";
@@ -17,27 +16,37 @@ const Viewtwo = ({
   currentIndex: number;
   screenIndex: number;
 }) => {
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const slideAnim = useRef(new Animated.Value(100)).current;
+  const slideAnim1 = useRef(new Animated.Value(0)).current;
+  const slideAnim2 = useRef(new Animated.Value(0)).current;
+  const slideAnim3 = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     if (currentIndex === screenIndex) {
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 4000,
+      Animated.timing(slideAnim1, {
+        toValue: 0,
+        duration: 800,
         useNativeDriver: true,
       }).start();
-      Animated.timing(slideAnim, {
+
+      Animated.timing(slideAnim2, {
         toValue: 0,
-        duration: 2000,
+        duration: 1300,
+        useNativeDriver: true,
+      }).start();
+
+      Animated.timing(slideAnim3, {
+        toValue: 0,
+        duration: 1800,
         useNativeDriver: true,
       }).start();
     } else {
+      // Right now, I commented the lines out so the animation only shows up the first time
       // Reset animation when not visible
-      fadeAnim.setValue(0);
-      slideAnim.setValue(100);
+      // slideAnim1.setValue(100);
+      // slideAnim2.setValue(100);
+      // slideAnim3.setValue(100);
     }
-  }, [currentIndex, screenIndex, fadeAnim, slideAnim]);
+  }, [currentIndex, screenIndex, slideAnim1]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -58,34 +67,35 @@ const Viewtwo = ({
               lineHeight: 48,
               letterSpacing: 0,
               maxWidth: "80%",
-              opacity: fadeAnim,
-              transform: [{ translateY: slideAnim }],
+              transform: [{ translateY: slideAnim1 }],
             }}
           >
             Friends Keep You Accountable.
           </Animated.Text>
-          <Text
+          <Animated.Text
             style={{
               fontSize: 16,
               marginTop: 20,
               lineHeight: 24,
               maxWidth: "80%",
               opacity: 0.7,
+              transform: [{ translateY: slideAnim2 }],
             }}
           >
             Let trusted friends padlock your vaults to help you stay on track.
             It’s savings with support!
-          </Text>
+          </Animated.Text>
         </View>
-        <View
+        <Animated.View
           style={{
             justifyContent: "center",
             alignItems: "center",
+            transform: [{ translateY: slideAnim3 }],
           }}
         >
           <View2 style={{ zIndex: 10, position: "absolute" }} />
           <View2card />
-        </View>
+        </Animated.View>
       </View>
     </SafeAreaView>
   );
