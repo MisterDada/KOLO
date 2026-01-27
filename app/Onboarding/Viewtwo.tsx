@@ -29,7 +29,7 @@ const Viewtwo = ({
       }).start();
 
       Animated.timing(slideAnim3, {
-        toValue: 0,
+        toValue: -20,
         duration: 900,
         useNativeDriver: true,
       }).start();
@@ -39,7 +39,7 @@ const Viewtwo = ({
       slideAnim2.setValue(100);
       slideAnim3.setValue(100);
     }
-  }, [currentIndex, screenIndex, slideAnim1]);
+  }, [currentIndex, screenIndex, slideAnim1, slideAnim2, slideAnim3]);
 
   return (
     <View style={{ flex: 1 }}>

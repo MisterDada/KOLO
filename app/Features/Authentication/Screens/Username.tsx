@@ -13,7 +13,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Back from "../../assets/images/Back.svg";
+import Back from "../../../../assets/images/Back.svg";
 
 type RootStackParamList = {
   // Define the navigation type for the Password screen

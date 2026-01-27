@@ -6,14 +6,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import Back from "../../assets/images/Back.svg";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Back from "../../../../assets/images/Back.svg";
 
 type RootStackParamList = {
   // Define the navigation type for the Password screen
@@ -30,7 +30,7 @@ const Password = () => {
   const checkPassword = () => {
     if (!passwordRegex.test(password) || password === "") {
       setError(
-        "! Password should not be empty and must be at least 12 characters long"
+        "! Password should not be empty and must be at least 12 characters long",
       );
       setBorderColor("#F47575");
     } else {
