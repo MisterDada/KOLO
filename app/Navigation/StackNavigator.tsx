@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import Email from "../Authentication/Email";
-import Password from "../Authentication/Password";
-import Username from "../Authentication/Username";
+import Email from "../Features/Authentication/Screens/Email";
+import Password from "../Features/Authentication/Screens/Password";
+import Username from "../Features/Authentication/Screens/Username";
 import OnboardingScreen from "../Onboarding/Onboarding";
 import SplashScreen from "../SplashScreen";
 import TabNavigator from "./TabNavigator";
