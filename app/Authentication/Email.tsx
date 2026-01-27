@@ -6,14 +6,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../assets/images/Back.svg";
 
 type RootStackParamList = {
@@ -28,8 +27,11 @@ const Email = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const checkEmail = () => {
-    if (!emailRegex.test(email) || email == "") {
-      setError("! Invalid Email");
+    if (email == "") {
+      setError(" Please enter your Email");
+      setBorderColor("#F47575");
+    } else if (!emailRegex.test(email)) {
+      setError("Invalid Email");
       setBorderColor("#F47575");
     } else {
       setEmail("");

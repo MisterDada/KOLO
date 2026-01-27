@@ -1,11 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import {
-  Animated,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-} from "react-native";
+import { Animated, StatusBar, StyleSheet, View } from "react-native";
 import View2card from "../../assets/images/View2card.svg";
 import View2 from "../../assets/images/Viewtwo.svg";
 
@@ -48,7 +42,7 @@ const Viewtwo = ({
   }, [currentIndex, screenIndex, slideAnim1]);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1 }}>
       <StatusBar barStyle="default" />
       <View style={styles.loader}></View>
       <View
@@ -96,7 +90,7 @@ const Viewtwo = ({
           <View2card />
         </Animated.View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

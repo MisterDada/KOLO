@@ -3,11 +3,12 @@ import {
   Dimensions,
   FlatList,
   Pressable,
-  SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Viewone from "./Viewone";
 import Viewthree from "./Viewthree";
 import Viewtwo from "./Viewtwo";
@@ -38,6 +39,7 @@ const OnboardingScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      <StatusBar barStyle="default" />
       <FlatList
         data={onboardingScreens}
         renderItem={({ item, index }) => (

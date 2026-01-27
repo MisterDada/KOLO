@@ -6,13 +6,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../assets/images/Back.svg";
 
 type RootStackParamList = {
@@ -67,7 +67,6 @@ const Username = () => {
                 placeholderTextColor="#BDBDBD"
                 value={username}
                 onChangeText={setUsername}
-                secureTextEntry
                 style={{
                   borderWidth: 1,
                   borderRadius: 20,

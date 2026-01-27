@@ -58,7 +58,7 @@ const StackNavigator = () => {
   }, []);
 
   const checkUser = async () => {
-    const user = true;
+    const user = false;
     if (user) {
       setIsLoggedIn(true);
     }
