@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
   Dimensions,
@@ -78,9 +79,17 @@ const OnboardingScreen = ({ navigation }: any) => {
             opacity: 0.8,
           }}
         >
-          {currentIndex === onboardingScreens.length - 1
-            ? ""
-            : "I already have a Kolo account"}
+          {currentIndex === onboardingScreens.length - 1 ? (
+            ""
+          ) : (
+            <Text
+              onPress={() => {
+                router.push("/Features/Authentication/Screens/Login");
+              }}
+            >
+              I already have a Kolo account
+            </Text>
+          )}
         </Text>
       </View>
     </SafeAreaView>
