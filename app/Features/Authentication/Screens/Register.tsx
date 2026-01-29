@@ -34,8 +34,8 @@ const Email = () => {
     };
 
     try {
-      await validateAll();
       await signup(request);
+      router.push("/Navigation/TabNavigator");
     } catch (error) {
       console.error(error);
     }
@@ -89,7 +89,7 @@ const Email = () => {
       const passwordMatchValid = checkPasswordMatch();
 
       if (emailValid && passwordValid && passwordMatchValid) {
-        router.push("/Navigation/TabNavigator");
+        registerUser();
       }
     } catch (error) {
       console.error("Validation error:", error);

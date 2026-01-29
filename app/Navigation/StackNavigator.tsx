@@ -1,7 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import Email from "../Features/Authentication/Screens/Email";
+import Login from "../Features/Authentication/Screens/Login";
 import Password from "../Features/Authentication/Screens/Password";
+import Register from "../Features/Authentication/Screens/Register";
 import Username from "../Features/Authentication/Screens/Username";
 import OnboardingScreen from "../Onboarding/Onboarding";
 import SplashScreen from "../SplashScreen";
@@ -35,7 +36,8 @@ const StackNavigator = () => {
       }}
     >
       <AuthStack.Screen name="Onboarding" component={OnboardingScreen} />
-      <AuthStack.Screen name="Email" component={Email} />
+      <AuthStack.Screen name="Register" component={Register} />
+      <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen name="Password" component={Password} />
       <AuthStack.Screen name="Username" component={Username} />
       <AuthStack.Screen name="TabNavigator" component={TabNavigator} />

@@ -33,6 +33,7 @@
     "firebase": "^12.8.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-hook-form": "^7.71.1",
     "react-native": "0.81.5",
     "react-native-calendar-picker": "^6.1.5",
     "react-native-gesture-handler": "~2.28.0",

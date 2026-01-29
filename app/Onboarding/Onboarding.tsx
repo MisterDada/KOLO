@@ -1,4 +1,3 @@
-import { router } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
   Dimensions,
@@ -30,11 +29,15 @@ const OnboardingScreen = ({ navigation }: any) => {
     setCurrentIndex(index);
   };
 
+  const move = () => {
+    navigation.navigate("Login");
+  };
+
   const scrollToNext = () => {
     if (currentIndex < onboardingScreens.length - 1) {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      navigation.navigate("Email");
+      navigation.navigate("Register");
     }
   };
 
@@ -71,26 +74,22 @@ const OnboardingScreen = ({ navigation }: any) => {
               : "Next"}
           </Text>
         </Pressable>
-        <Text
-          style={{
-            fontSize: 16,
-            color: "#3673FF",
-            fontWeight: 700,
-            opacity: 0.8,
-          }}
-        >
-          {currentIndex === onboardingScreens.length - 1 ? (
-            ""
-          ) : (
-            <Text
-              onPress={() => {
-                router.push("/Features/Authentication/Screens/Login");
-              }}
-            >
-              I already have a Kolo account
-            </Text>
-          )}
-        </Text>
+        <Pressable onPress={move}>
+          <Text
+            style={{
+              fontSize: 16,
+              color: "#3673FF",
+              fontWeight: 700,
+              opacity: 0.8,
+            }}
+          >
+            {currentIndex === onboardingScreens.length - 1 ? (
+              ""
+            ) : (
+              <Text onPress={move}>I already have a Kolo account</Text>
+            )}
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
