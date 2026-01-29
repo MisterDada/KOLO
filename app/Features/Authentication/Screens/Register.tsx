@@ -16,7 +16,7 @@ import Back from "../../../../assets/images/Back.svg";
 import { RegisterRequest } from "../Models/RegisterRequest";
 import { signup } from "../Services/registerService";
 
-const Email = () => {
+const Email = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +35,6 @@ const Email = () => {
 
     try {
       await signup(request);
-      router.push("/Navigation/TabNavigator");
     } catch (error) {
       console.error(error);
     }
@@ -90,6 +89,7 @@ const Email = () => {
 
       if (emailValid && passwordValid && passwordMatchValid) {
         registerUser();
+        navigation.navigate("TabNavigator");
       }
     } catch (error) {
       console.error("Validation error:", error);
@@ -154,7 +154,7 @@ const Email = () => {
             <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
               <Pressable
                 onPress={() => {
-                  registerUser();
+                  validateAll();
                 }}
                 style={{
                   backgroundColor: "#333333",
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   textFields: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 20,
     fontSize: 16,
     color: "#333333",

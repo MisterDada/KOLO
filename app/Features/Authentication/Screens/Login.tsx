@@ -17,6 +17,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const validate;
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="dark-content" />
@@ -50,6 +52,7 @@ const Login = () => {
               placeholderTextColor="#BDBDBD"
               value={password}
             />
+            <Text style={{ color: "#F47575" }}>{passwordError}</Text>
           </View>
         </View>
         <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   textFields: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 20,
     fontSize: 16,
     color: "#333333",
