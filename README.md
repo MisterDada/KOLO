@@ -1,50 +1,27 @@
-# Welcome to your Expo app 👋
+# KOLO+
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+KOLO+ is a React Native mobile application that demonstrates a polished, swipe-based onboarding flow with multiple screens and secure user authentication using Firebase.
 
-## Get started
+## Screenshots
 
-1. Install dependencies
+### Splash Screen
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/450cea1b-644c-4542-9181-3e940259afaf" width="220" />
+</p>
 
-   ```bash
-   npm install
-   ```
+### Onboarding Flow
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8c6848ae-8941-460f-b895-bfd14a08ee4a" width="220" />
+  <img src="https://github.com/user-attachments/assets/548143b4-d8d6-4fe3-9aa5-fc3d1599af1e" width="220" />
+  <img src="https://github.com/user-attachments/assets/d776110e-3b40-417f-9dcb-27dd249e8303" width="220" />
+</p>
 
-2. Start the app
 
-   ```bash
-   npx expo start
-   ```
+## Key Features
+- Swipe-based onboarding with gesture handling
+- Firebase Authentication integration
+- Clean, modular React Native architecture
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
