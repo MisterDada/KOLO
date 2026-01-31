@@ -1,4 +1,3 @@
-import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -10,21 +9,39 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../../../assets/images/Back.svg";
+import { LoginRequest } from "../Models/LoginRequest";
+import { login } from "../Services/loginService";
 
-const Login = () => {
+const Login = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const validate;
+  const registerUser = async () => {
+    const request: LoginRequest = {
+      email,
+      password,
+    };
+    try {
+      if (!email && !password) {
+        setEmailError("Email is required");
+        setPasswordError("Password is required");
+      } else {
+        await login(request);
+        navigation.navigate("TabNavigator");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
         <View style={{ gap: 20 }}>
-          <Back onPress={router.back} />
+          <Back onPress={navigation.goBack} />
           <Text
             style={{
               fontSize: 40,
@@ -44,6 +61,7 @@ const Login = () => {
               placeholder="Enter your email"
               placeholderTextColor="#BDBDBD"
               value={email}
+              onChangeText={setEmail}
             />
             <Text style={{ color: "#F47575" }}>{emailError}</Text>
             <TextInput
@@ -51,12 +69,14 @@ const Login = () => {
               placeholder="Enter password"
               placeholderTextColor="#BDBDBD"
               value={password}
+              onChangeText={setPassword}
             />
             <Text style={{ color: "#F47575" }}>{passwordError}</Text>
           </View>
         </View>
         <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
           <Pressable
+            onPress={registerUser}
             style={{
               backgroundColor: "#333333",
               paddingVertical: 20,

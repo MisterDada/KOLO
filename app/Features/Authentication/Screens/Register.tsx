@@ -34,14 +34,6 @@ const Email = ({ navigation }: any) => {
     };
 
     try {
-      await signup(request);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const validateAll = async () => {
-    try {
       const checkEmail = () => {
         if (email === "") {
           setEmailError("Please enter your Email");
@@ -69,7 +61,6 @@ const Email = ({ navigation }: any) => {
           return true;
         }
       };
-
       const checkPasswordMatch = () => {
         if (confirmPassword !== password) {
           setConfirmPasswordError("passwords do not match");
@@ -81,14 +72,12 @@ const Email = ({ navigation }: any) => {
           return true;
         }
       };
-
-      // Call the validation functions
       const emailValid = checkEmail();
       const passwordValid = checkPassword();
       const passwordMatchValid = checkPasswordMatch();
 
       if (emailValid && passwordValid && passwordMatchValid) {
-        registerUser();
+        await signup(request);
         navigation.navigate("TabNavigator");
       }
     } catch (error) {
@@ -154,7 +143,7 @@ const Email = ({ navigation }: any) => {
             <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
               <Pressable
                 onPress={() => {
-                  validateAll();
+                  registerUser();
                 }}
                 style={{
                   backgroundColor: "#333333",
