@@ -1,5 +1,6 @@
+import { useAuth } from "@/src/context/AuthContext";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Login from "../Features/Authentication/Screens/Login";
 import Password from "../Features/Authentication/Screens/Password";
 import Register from "../Features/Authentication/Screens/Register";
@@ -13,6 +14,12 @@ const InsideStack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
 
 const StackNavigator = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <SplashScreen />;
+  }
+
   const InsideStackNavigator = () => (
     <InsideStack.Navigator
       initialRouteName="TabNavigator"
@@ -44,36 +51,9 @@ const StackNavigator = () => {
     </AuthStack.Navigator>
   );
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //change all this later to use Async storage
-  const [showSplash, setShowSplash] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    checkUser();
-  }, []);
-
-  const checkUser = async () => {
-    const user = false;
-    if (user) {
-      setIsLoggedIn(true);
-    }
-  };
-
-  if (showSplash) {
-    return <SplashScreen />;
-  }
-
-  // Render your navigation stack after splash
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {isLoggedIn ? (
+      {user ? (
         <Stack.Screen name="Inside" component={InsideStackNavigator} />
       ) : (
         <Stack.Screen name="Auth" component={AuthStackNavigator} />
@@ -83,3 +63,20 @@ const StackNavigator = () => {
 };
 
 export default StackNavigator;
+
+// const [isLoggedIn, setIsLoggedIn] = useState(false); //change all this later to use Async storage
+// const [showSplash, setShowSplash] = useState(true);
+
+// useEffect(() => {
+//   const timer = setTimeout(() => {
+//     setShowSplash(false);
+//   }, 2000);
+
+//   return () => clearTimeout(timer);
+// }, []);
+
+// if (showSplash) {
+//   return <SplashScreen />;
+// }
+
+// Render your navigation stack after splash
