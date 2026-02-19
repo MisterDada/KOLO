@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { onAuthStateChanged, User } from "firebase/auth";
 import React, {
   createContext,
@@ -34,8 +35,33 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    // Listen for auth state changes
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+
+      // Save user data to AsyncStorage if logged in
+      if (currentUser) {
+        try {
+          await AsyncStorage.setItem(
+            "userData",
+            JSON.stringify({
+              uid: currentUser.uid,
+              email: currentUser.email,
+              displayName: currentUser.displayName,
+            }),
+          );
+        } catch (error) {
+          console.log("Error saving user data:", error);
+        }
+      } else {
+        // Clear storage if user logs out
+        try {
+          await AsyncStorage.removeItem("userData");
+        } catch (error) {
+          console.log("Error clearing storage:", error);
+        }
+      }
+
       setLoading(false);
     });
 

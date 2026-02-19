@@ -25,9 +25,9 @@ const Home = () => {
             <Text style={{ color: "#333333", fontSize: 16, fontWeight: 500 }}>
               Welcome,
             </Text>
-            <Text style={{ color: "#333333", fontSize: 18, fontWeight: 600 }}>
-              Michael Okogwu
-            </Text>
+            <Text
+              style={{ color: "#333333", fontSize: 18, fontWeight: 600 }}
+            ></Text>
           </View>
         </View>
         <SettingsIcon />
