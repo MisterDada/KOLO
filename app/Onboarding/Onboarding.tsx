@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
   Dimensions,
@@ -20,7 +21,8 @@ const onboardingScreens = [
   (props: any) => <Viewthree {...props} />,
 ];
 
-const OnboardingScreen = ({ navigation }: any) => {
+const OnboardingScreen = () => {
+  const router = useRouter();
   const flatListRef = useRef<FlatList>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -30,14 +32,14 @@ const OnboardingScreen = ({ navigation }: any) => {
   };
 
   const move = () => {
-    navigation.navigate("Login");
+    router.push("/(auth)/login");
   };
 
   const scrollToNext = () => {
     if (currentIndex < onboardingScreens.length - 1) {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      navigation.navigate("Register");
+      router.push("/(auth)/register");
     }
   };
 

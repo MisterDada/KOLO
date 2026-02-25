@@ -1,8 +1,5 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { initializeApp } from "firebase/app";
-import { initializeAuth } from "firebase/auth";
-// @ts-ignore - Firebase v12 removed the React Native entry point, but the functionality still works
-import { getReactNativePersistence } from "firebase/auth";
+import { initializeAuth, inMemoryPersistence } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAxKeuFVVpOLxQOKoRpHd_fTPjQLvyQqoI",
@@ -17,7 +14,7 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-// Initialize Auth with AsyncStorage persistence for React Native
+// Initialize Auth with memory persistence for React Native to bypass bundler errors
 export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage),
+  persistence: inMemoryPersistence,
 });

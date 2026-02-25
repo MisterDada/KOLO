@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -7,12 +8,12 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../../../assets/images/Back.svg";
 import { LoginRequest } from "../Models/LoginRequest";
 import { login } from "../Services/loginService";
 
-const Login = ({ navigation }: any) => {
+const Login = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +30,7 @@ const Login = ({ navigation }: any) => {
         setPasswordError("Password is required");
       } else {
         await login(request);
-        navigation.navigate("TabNavigator");
+        // Authentication is handled by global state; layout will automatically redirect
       }
     } catch (error) {
       console.error(error);
@@ -37,11 +38,11 @@ const Login = ({ navigation }: any) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
         <View style={{ gap: 20 }}>
-          <Back onPress={navigation.goBack} />
+          <Back onPress={() => router.back()} />
           <Text
             style={{
               fontSize: 40,
@@ -94,7 +95,7 @@ const Login = ({ navigation }: any) => {
           </Pressable>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    paddingTop: 50,
+    paddingTop: 100,
     paddingHorizontal: 25,
     justifyContent: "space-between",
   },

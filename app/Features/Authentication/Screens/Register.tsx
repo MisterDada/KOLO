@@ -1,22 +1,23 @@
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableWithoutFeedback,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../../../assets/images/Back.svg";
 import { RegisterRequest } from "../Models/RegisterRequest";
 import { signup } from "../Services/registerService";
 
-const Email = ({ navigation }: any) => {
+const Email = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
@@ -78,7 +79,7 @@ const Email = ({ navigation }: any) => {
 
       if (emailValid && passwordValid && passwordMatchValid) {
         await signup(request);
-        navigation.navigate("TabNavigator");
+        // Authentication is handled by global state; layout will automatically redirect to inside stack
       }
     } catch (error) {
       console.error("Validation error:", error);
@@ -94,7 +95,7 @@ const Email = ({ navigation }: any) => {
         >
           <View style={styles.container}>
             <View style={{ gap: 20 }}>
-              <Back onPress={router.back} />
+              <Back onPress={() => router.back()} />
               <Text
                 style={{
                   fontSize: 40,

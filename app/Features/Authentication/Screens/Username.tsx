@@ -1,26 +1,21 @@
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableWithoutFeedback,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../../../assets/images/Back.svg";
 
-type RootStackParamList = {
-  // Define the navigation type for the Password screen
-  TabNavigator: undefined;
-};
-
 const Username = () => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [borderColor, setBorderColor] = useState("white");
@@ -33,12 +28,10 @@ const Username = () => {
       setUsername("");
       setError("");
       setBorderColor("white");
-      navigation.navigate("TabNavigator");
+      router.replace("/(tabs)/" as any);
     }
   };
 
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -48,7 +41,7 @@ const Username = () => {
         >
           <View style={styles.container}>
             <View style={{ gap: 20 }}>
-              <Back onPress={navigation.goBack} />
+              <Back onPress={() => router.back()} />
               <Text
                 style={{
                   fontSize: 40,
