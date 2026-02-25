@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, StatusBar, StyleSheet, View } from "react-native";
 import View3image from "../../assets/images/View3.svg";
+import { colors, sizes } from "../theme";
 
 const Viewone = ({
   currentIndex,
@@ -40,20 +41,20 @@ const Viewone = ({
 
   return (
     <View>
-      <StatusBar barStyle="default" />
+      <StatusBar barStyle="dark-content" />
       <View style={styles.loader}></View>
       <View
         style={{
-          paddingHorizontal: 25,
+          paddingHorizontal: sizes.paddingScreen,
           marginTop: 50,
         }}
       >
         <View>
           <Animated.Text
             style={{
-              fontSize: 40,
-              fontWeight: 500,
-              color: "#333333",
+              fontSize: sizes.fontSize.hero,
+              fontWeight: "500",
+              color: colors.textMain,
               lineHeight: 48,
               letterSpacing: 0,
               maxWidth: "80%",
@@ -71,7 +72,7 @@ const Viewone = ({
             </Animated.Text>
             <Animated.Text
               style={{
-                color: "#3673FF",
+                color: colors.secondary,
                 fontStyle: "italic",
                 transform: [{ translateY: slideAnim1 }],
               }}
@@ -81,11 +82,12 @@ const Viewone = ({
           </Animated.Text>
           <Animated.Text
             style={{
-              fontSize: 16,
-              marginTop: 20,
+              fontSize: sizes.fontSize.md,
+              marginTop: sizes.spacing.md,
               lineHeight: 24,
               maxWidth: "80%",
               opacity: 0.7,
+              color: colors.textMain,
               transform: [{ translateY: slideAnim2 }],
             }}
           >
@@ -118,11 +120,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    backgroundColor: "#333333",
-    paddingVertical: 20,
+    backgroundColor: colors.textMain,
+    paddingVertical: sizes.spacing.md,
     paddingHorizontal: 30,
-    borderRadius: 100,
-    height: 60,
+    borderRadius: sizes.radius.round,
+    height: sizes.buttonHeight,
     width: 100,
     justifyContent: "center",
     alignItems: "center",

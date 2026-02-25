@@ -12,159 +12,122 @@ import {
 const Create = () => {
   const [vaultName, setVaultName] = useState<string>("");
   const [goalAmount, setGoalAmount] = useState<string>("");
+  const [targetDate, setTargetDate] = useState<string>("");
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#D9D9D9" }}>
-      <View style={styles.header}>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ fontSize: 24, color: "#333333", fontWeight: 600 }}>
-            Create New Vault
-          </Text>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ backgroundColor: "white" }}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Create New Vault</Text>
+          </View>
+          <View>
+            <Text style={styles.subtitle}>
+              Give your new vault a name and savings goal. Whether it’s a new
+              phone, rent, or the next trip — this is where it starts.
+            </Text>
+          </View>
         </View>
-        <View>
-          <Text
-            style={{
-              color: "#333333",
-              lineHeight: 24,
-              opacity: 0.6,
-              fontSize: 16,
-              fontWeight: 500,
-              letterSpacing: 0,
-            }}
-          >
-            Give your new vault a name and savings goal. Whether it’s a new
-            phone, rent, or the next trip — this is where it starts.
-          </Text>
-        </View>
-      </View>
-      <ScrollView contentContainerStyle={styles.form}>
+
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
-          style={{ flex: 1 }}
+          style={styles.form}
         >
-          <View>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 500,
-                color: "#333333",
-                lineHeight: 24,
-                letterSpacing: 0,
-                marginBottom: 12,
-              }}
-            >
-              Vault Name
-            </Text>
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Vault Name</Text>
             <TextInput
               placeholder="What are you saving for?"
               placeholderTextColor="#BDBDBD"
               value={vaultName}
               onChangeText={setVaultName}
-              style={{
-                borderRadius: 10,
-                //   borderColor: borderColor,
-                padding: 15,
-                fontSize: 16,
-                color: "#333333",
-                backgroundColor: "#F2F2F2",
-                paddingVertical: 20,
-                paddingHorizontal: 23,
-                height: 60,
-              }}
+              style={styles.input}
             />
           </View>
-          <View style={{ paddingTop: 20 }}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 500,
-                color: "#333333",
-                lineHeight: 24,
-                letterSpacing: 0,
-                marginBottom: 12,
-              }}
-            >
-              Goal Amount
-            </Text>
+
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Goal Amount</Text>
             <TextInput
               placeholder="Enter Amount"
               placeholderTextColor="#BDBDBD"
               keyboardType="numeric"
               value={goalAmount}
               onChangeText={setGoalAmount}
-              style={{
-                borderRadius: 10,
-                //   borderColor: borderColor,
-                padding: 15,
-                fontSize: 16,
-                color: "#333333",
-                backgroundColor: "#F2F2F2",
-                paddingVertical: 20,
-                paddingHorizontal: 23,
-                height: 60,
-              }}
+              style={styles.input}
             />
           </View>
-          <View style={{ paddingTop: 20 }}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 500,
-                color: "#333333",
-                lineHeight: 24,
-                letterSpacing: 0,
-                marginBottom: 12,
-              }}
-            >
-              Target Date
-            </Text>
+
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Target Date</Text>
             <TextInput
               placeholder="DD/MM/YY"
               placeholderTextColor="#BDBDBD"
-              value={vaultName}
-              onChangeText={setVaultName}
-              style={{
-                borderRadius: 10,
-                //   borderColor: borderColor,
-                padding: 15,
-                fontSize: 16,
-                color: "#333333",
-                backgroundColor: "#F2F2F2",
-                paddingVertical: 20,
-                paddingHorizontal: 23,
-                height: 60,
-              }}
+              value={targetDate}
+              onChangeText={setTargetDate}
+              style={styles.input}
             />
           </View>
         </KeyboardAvoidingView>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
 export default Create;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+  },
   header: {
     justifyContent: "flex-start",
-    alignItems: "center",
     paddingHorizontal: 25,
     paddingTop: 80,
     paddingBottom: 20,
     gap: 20,
     backgroundColor: "white",
   },
+  titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 24,
+    color: "#333333",
+    fontWeight: "600",
+  },
+  subtitle: {
+    color: "#333333",
+    lineHeight: 24,
+    opacity: 0.6,
+    fontSize: 16,
+    fontWeight: "500",
+    letterSpacing: 0,
+  },
   form: {
     backgroundColor: "white",
-    flex: 1,
-    marginTop: 16,
     paddingHorizontal: 25,
     paddingTop: 24,
     gap: 24,
+  },
+  inputGroup: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: "500",
+    lineHeight: 24,
+    letterSpacing: 0,
+    marginBottom: 12,
+  },
+  input: {
+    borderRadius: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 23,
+    fontSize: 16,
+    backgroundColor: "white",
+    height: 60,
+    borderWidth: 1,
+    borderColor: "#EEEEEE",
   },
 });

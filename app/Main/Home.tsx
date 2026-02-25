@@ -11,36 +11,37 @@ import EyeIcon from "../../assets/images/Eye.svg";
 import SettingsIcon from "../../assets/images/Setting.svg";
 import ProfileIcon from "../../assets/images/TabNavigator/Profile.svg";
 import Vault from "../Components/Vault";
+import { colors, sizes } from "../theme";
 
 const Home = () => {
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
+    <ScrollView style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar barStyle={"dark-content"} />
       <View style={styles.header}>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: sizes.spacing.sm }}>
           <View style={{ width: 35, height: 35 }}>
             <ProfileIcon width={35} height={35} />
           </View>
           <View>
-            <Text style={{ color: "#333333", fontSize: 16, fontWeight: 500 }}>
-              Welcome,
+            <Text style={{ color: colors.textMain, fontSize: sizes.fontSize.md, fontWeight: "500" }}>
+              Welcome, 
             </Text>
             <Text
-              style={{ color: "#333333", fontSize: 18, fontWeight: 600 }}
-            ></Text>
+              style={{ color: colors.textMain, fontSize: sizes.fontSize.lg, fontWeight: "600" }}
+            >Dada Obafemi</Text>
           </View>
         </View>
         <SettingsIcon />
       </View>
 
-      <View style={{ marginBottom: 10 }}>
+      <View style={{ marginBottom: sizes.spacing.sm }}>
         <View style={styles.accountInfo}>
-          <View style={{ flexDirection: "row", gap: 10, paddingBottom: 20 }}>
+          <View style={{ flexDirection: "row", gap: sizes.spacing.sm, paddingBottom: sizes.spacing.md }}>
             <View
               style={{
                 padding: 11,
-                backgroundColor: "#F3F3F3",
-                borderRadius: 100,
+                backgroundColor: colors.inputBackground, // Map F3F3F3 to inputBackground
+                borderRadius: sizes.radius.round,
                 flexDirection: "row",
                 gap: 5,
               }}
@@ -49,21 +50,21 @@ const Home = () => {
               <EyeIcon />
             </View>
           </View>
-          <Text style={{ color: "#3D9CFB", fontSize: 32, fontWeight: 600 }}>
+          <Text style={{ color: colors.primary, fontSize: sizes.fontSize.xxl, fontWeight: "500" }}>
             NGN655,000.00
           </Text>
-          <View style={{ flexDirection: "row", gap: 10, paddingTop: 29 }}>
+          <View style={{ flexDirection: "row", gap: sizes.spacing.sm, paddingTop: 29 }}>
             <Pressable
               style={[
                 styles.operations,
                 {
-                  borderColor: "#3D9CFB",
+                  borderColor: colors.primary,
                   borderWidth: 1,
-                  backgroundColor: "#3d9cfb23",
+                  backgroundColor: "#c8e4ff23", // Custom alpha, leaving as is for now
                 },
               ]}
             >
-              <Text style={[styles.operationsText, { color: "#3D9CFB" }]}>
+              <Text style={[styles.operationsText, { color: colors.primary }]}>
                 <Text style={styles.operationIcons}>+</Text> Add
               </Text>
             </Pressable>
@@ -92,32 +93,33 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
-    paddingTop: 80,
-    paddingBottom: 10,
-    backgroundColor: "white",
+    paddingHorizontal: sizes.paddingScreen,
+    paddingTop: 50,
+    paddingBottom: sizes.spacing.sm,
+    backgroundColor: colors.surface,
   },
   accountInfo: {
-    paddingHorizontal: 20,
+    paddingHorizontal: sizes.paddingScreen,
     paddingVertical: 30,
-    backgroundColor: "white",
+    backgroundColor: colors.surface,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     zIndex: 5,
   },
   operations: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: "#F3F3F3",
-    borderRadius: 100,
+    paddingVertical: sizes.spacing.sm,
+    paddingHorizontal: sizes.spacing.md,
+    backgroundColor: colors.inputBackground,
+    borderRadius: sizes.radius.round,
     justifyContent: "center",
     alignItems: "center",
   },
   operationIcons: {
-    fontSize: 18,
-    marginRight: 10,
+    fontSize: sizes.fontSize.lg,
+    marginRight: sizes.spacing.sm,
   },
   operationsText: {
-    fontSize: 14,
+    fontSize: sizes.fontSize.sm,
+    color: colors.textMain,
   },
 });

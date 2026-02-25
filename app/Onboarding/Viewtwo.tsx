@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Animated, StatusBar, StyleSheet, View } from "react-native";
 import View2card from "../../assets/images/View2card.svg";
 import View2 from "../../assets/images/Viewtwo.svg";
+import { colors, sizes } from "../theme";
 
 const Viewtwo = ({
   currentIndex,
@@ -43,20 +44,20 @@ const Viewtwo = ({
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar barStyle="default" />
+      <StatusBar barStyle="dark-content" />
       <View style={styles.loader}></View>
       <View
         style={{
-          paddingHorizontal: 25,
+          paddingHorizontal: sizes.paddingScreen,
           marginTop: 50,
         }}
       >
         <View>
           <Animated.Text
             style={{
-              fontSize: 40,
-              fontWeight: 500,
-              color: "#333333",
+              fontSize: sizes.fontSize.hero,
+              fontWeight: "500",
+              color: colors.textMain,
               lineHeight: 48,
               letterSpacing: 0,
               maxWidth: "80%",
@@ -67,11 +68,12 @@ const Viewtwo = ({
           </Animated.Text>
           <Animated.Text
             style={{
-              fontSize: 16,
-              marginTop: 20,
+              fontSize: sizes.fontSize.md,
+              marginTop: sizes.spacing.md,
               lineHeight: 24,
               maxWidth: "80%",
               opacity: 0.7,
+              color: colors.textMain,
               transform: [{ translateY: slideAnim2 }],
             }}
           >
@@ -105,11 +107,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    backgroundColor: "#333333",
-    paddingVertical: 20,
+    backgroundColor: colors.textMain,
+    paddingVertical: sizes.spacing.md,
     paddingHorizontal: 30,
-    borderRadius: 100,
-    height: 60,
+    borderRadius: sizes.radius.round,
+    height: sizes.buttonHeight,
     width: 100,
     justifyContent: "center",
     alignItems: "center",

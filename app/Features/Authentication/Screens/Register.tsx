@@ -5,6 +5,7 @@ import {
     KeyboardAvoidingView,
     Platform,
     Pressable,
+    ScrollView,
     StyleSheet,
     Text,
     TextInput,
@@ -13,6 +14,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../../../assets/images/Back.svg";
+import { colors, sizes } from "../../../theme";
 import { RegisterRequest } from "../Models/RegisterRequest";
 import { signup } from "../Services/registerService";
 
@@ -24,7 +26,7 @@ const Email = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
-  const [borderColor, setBorderColor] = useState("white");
+  const [borderColor, setBorderColor] = useState(colors.inputBackground);
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -38,15 +40,15 @@ const Email = () => {
       const checkEmail = () => {
         if (email === "") {
           setEmailError("Please enter your Email");
-          setBorderColor("#F47575");
+          setBorderColor(colors.error);
           return false;
         } else if (!emailRegex.test(email)) {
           setEmailError("Invalid Email");
-          setBorderColor("#F47575");
+          setBorderColor(colors.error);
           return false;
         } else {
           setEmailError("");
-          setBorderColor("white");
+          setBorderColor(colors.inputBackground);
           return true;
         }
       };
@@ -54,22 +56,22 @@ const Email = () => {
       const checkPassword = () => {
         if (password === "") {
           setPasswordError("password cannot be empty");
-          setBorderColor("#F47575");
+          setBorderColor(colors.error);
           return false;
         } else {
           setPasswordError("");
-          setBorderColor("white");
+          setBorderColor(colors.inputBackground);
           return true;
         }
       };
       const checkPasswordMatch = () => {
         if (confirmPassword !== password) {
           setConfirmPasswordError("passwords do not match");
-          setBorderColor("#F47575");
+          setBorderColor(colors.error);
           return false;
         } else {
           setConfirmPasswordError("");
-          setBorderColor("white");
+          setBorderColor(colors.inputBackground);
           return true;
         }
       };
@@ -87,84 +89,85 @@ const Email = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={{ flex: 1 }}
         >
-          <View style={styles.container}>
-            <View style={{ gap: 20 }}>
-              <Back onPress={() => router.back()} />
-              <Text
-                style={{
-                  fontSize: 40,
-                  fontWeight: 500,
-                  color: "#333333",
-                  lineHeight: 48,
-                  letterSpacing: 0,
-                  marginBottom: 43,
-                  maxWidth: "70%",
-                }}
-              >
-                Create an account
-              </Text>
-              <View style={{ gap: 5 }}>
-                <TextInput
-                  placeholder="Enter your preferred email"
-                  placeholderTextColor="#BDBDBD"
-                  keyboardType="email-address"
-                  value={email}
-                  onChangeText={setEmail}
-                  style={[styles.textFields, { borderColor: borderColor }]}
-                />
-                <Text style={{ color: "#F47575" }}>{emailError}</Text>
-                <TextInput
-                  placeholder="Enter a password"
-                  placeholderTextColor="#BDBDBD"
-                  keyboardType="numeric"
-                  secureTextEntry
-                  value={password}
-                  onChangeText={setPassword}
-                  style={[styles.textFields, { borderColor: borderColor }]}
-                />
-                <Text style={{ color: "#F47575" }}>{passwordError}</Text>
-                <TextInput
-                  placeholder="Confirm password"
-                  placeholderTextColor="#BDBDBD"
-                  keyboardType="numeric"
-                  secureTextEntry
-                  value={confirmPassword}
-                  onChangeText={setConfirmPassword}
-                  style={[styles.textFields, { borderColor: borderColor }]}
-                />
-                <Text style={{ color: "#F47575" }}>{confirmPasswordError}</Text>
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <View style={styles.container}>
+              <View style={{ gap: sizes.spacing.md }}>
+                <Back onPress={() => router.back()} />
+                <Text
+                  style={{
+                    fontSize: sizes.fontSize.hero,
+                    fontWeight: "500",
+                    color: colors.textMain,
+                    lineHeight: 48,
+                    letterSpacing: 0,
+                    marginBottom: 43,
+                    maxWidth: "70%",
+                  }}
+                >
+                  Create an account
+                </Text>
+                <View style={{ gap: 5 }}>
+                  <TextInput
+                    placeholder="Enter your preferred email"
+                    placeholderTextColor={colors.textMuted}
+                    keyboardType="email-address"
+                    value={email}
+                    onChangeText={setEmail}
+                    style={[styles.textFields, { borderColor: borderColor, borderWidth: borderColor === colors.error ? 1 : 0 }]}
+                  />
+                  <Text style={{ color: colors.error }}>{emailError}</Text>
+                  <TextInput
+                    placeholder="Enter a password"
+                    placeholderTextColor={colors.textMuted}
+                    keyboardType="numeric"
+                    secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
+                    style={[styles.textFields, { borderColor: borderColor, borderWidth: borderColor === colors.error ? 1 : 0 }]}
+                  />
+                  <Text style={{ color: colors.error }}>{passwordError}</Text>
+                  <TextInput
+                    placeholder="Confirm password"
+                    placeholderTextColor={colors.textMuted}
+                    keyboardType="numeric"
+                    secureTextEntry
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    style={[styles.textFields, { borderColor: borderColor, borderWidth: borderColor === colors.error ? 1 : 0 }]}
+                  />
+                  <Text style={{ color: colors.error }}>{confirmPasswordError}</Text>
+                </View>
+              </View>
+              <View style={{ alignItems: "flex-end", paddingBottom: sizes.spacing.xl, marginTop: sizes.spacing.xl }}>
+                <Pressable
+                  onPress={() => {
+                    registerUser();
+                  }}
+                  style={{
+                    backgroundColor: colors.textMain,
+                    paddingVertical: sizes.spacing.md,
+                    paddingHorizontal: 30,
+                    borderRadius: sizes.radius.round,
+                    height: sizes.buttonHeight,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{ color: colors.surface, fontSize: sizes.fontSize.md, fontWeight: "700" }}
+                  >
+                    Continue
+                  </Text>
+                </Pressable>
               </View>
             </View>
-            <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
-              <Pressable
-                onPress={() => {
-                  registerUser();
-                }}
-                style={{
-                  backgroundColor: "#333333",
-                  paddingVertical: 20,
-                  paddingHorizontal: 30,
-                  borderRadius: 100,
-                  height: 60,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: 50,
-                }}
-              >
-                <Text
-                  style={{ color: "white", fontSize: 16, fontWeight: "700" }}
-                >
-                  Continue
-                </Text>
-              </Pressable>
-            </View>
-          </View>
+          </ScrollView>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -175,19 +178,18 @@ export default Email;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 25,
+    paddingHorizontal: sizes.paddingScreen,
     paddingTop: 50,
     justifyContent: "space-between",
     flex: 1,
   },
   textFields: {
-    borderWidth: 0,
-    borderRadius: 20,
-    fontSize: 16,
-    color: "#333333",
-    backgroundColor: "#F2F2F2",
-    paddingVertical: 20,
+    borderRadius: sizes.radius.md,
+    fontSize: sizes.fontSize.md,
+    color: colors.textMain,
+    backgroundColor: colors.inputBackground,
+    paddingVertical: sizes.spacing.md,
     paddingHorizontal: 23,
-    height: 60,
+    height: sizes.inputHeight,
   },
 });

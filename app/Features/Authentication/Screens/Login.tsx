@@ -1,14 +1,18 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Pressable,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TextInput,
+    View,
 } from "react-native";
 import Back from "../../../../assets/images/Back.svg";
+import { colors, sizes } from "../../../theme";
 import { LoginRequest } from "../Models/LoginRequest";
 import { login } from "../Services/loginService";
 
@@ -38,64 +42,69 @@ const Login = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <KeyboardAvoidingView 
+      behavior={Platform.OS === "ios" ? "padding" : "height"} 
+      style={{ flex: 1, backgroundColor: colors.surface }}
+    >
       <StatusBar barStyle="dark-content" />
-      <View style={styles.container}>
-        <View style={{ gap: 20 }}>
-          <Back onPress={() => router.back()} />
-          <Text
-            style={{
-              fontSize: 40,
-              fontWeight: 500,
-              color: "#333333",
-              lineHeight: 48,
-              letterSpacing: 0,
-              marginBottom: 43,
-              maxWidth: "70%",
-            }}
-          >
-            Login
-          </Text>
-          <View style={{ gap: 5 }}>
-            <TextInput
-              style={styles.textFields}
-              placeholder="Enter your email"
-              placeholderTextColor="#BDBDBD"
-              value={email}
-              onChangeText={setEmail}
-            />
-            <Text style={{ color: "#F47575" }}>{emailError}</Text>
-            <TextInput
-              style={styles.textFields}
-              placeholder="Enter password"
-              placeholderTextColor="#BDBDBD"
-              value={password}
-              onChangeText={setPassword}
-            />
-            <Text style={{ color: "#F47575" }}>{passwordError}</Text>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={styles.container}>
+          <View style={{ gap: sizes.spacing.md }}>
+            <Back onPress={() => router.back()} />
+            <Text
+              style={{
+                fontSize: sizes.fontSize.hero,
+                fontWeight: "500",
+                color: colors.textMain,
+                lineHeight: 48,
+                letterSpacing: 0,
+                marginBottom: 43,
+                maxWidth: "70%",
+              }}
+            >
+              Login
+            </Text>
+            <View style={{ gap: 5 }}>
+              <TextInput
+                style={styles.textFields}
+                placeholder="Enter your email"
+                placeholderTextColor={colors.textMuted}
+                value={email}
+                onChangeText={setEmail}
+              />
+              <Text style={{ color: colors.error }}>{emailError}</Text>
+              <TextInput
+                style={styles.textFields}
+                placeholder="Enter password"
+                placeholderTextColor={colors.textMuted}
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+              />
+              <Text style={{ color: colors.error }}>{passwordError}</Text>
+            </View>
+          </View>
+          <View style={{ alignItems: "flex-end", paddingBottom: sizes.spacing.xl, marginTop: sizes.spacing.xl }}>
+            <Pressable
+              onPress={registerUser}
+              style={{
+                backgroundColor: colors.textMain,
+                paddingVertical: sizes.spacing.md,
+                paddingHorizontal: 30,
+                borderRadius: sizes.radius.round,
+                height: sizes.buttonHeight,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={{ color: colors.surface, fontSize: sizes.fontSize.md, fontWeight: "700" }}>
+                Continue
+              </Text>
+            </Pressable>
           </View>
         </View>
-        <View style={{ alignItems: "flex-end", paddingBottom: 113 }}>
-          <Pressable
-            onPress={registerUser}
-            style={{
-              backgroundColor: "#333333",
-              paddingVertical: 20,
-              paddingHorizontal: 30,
-              borderRadius: 100,
-              height: 60,
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 50,
-            }}
-          >
-            <Text style={{ color: "white", fontSize: 16, fontWeight: "700" }}>
-              Continue
-            </Text>
-          </Pressable>
-        </View>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -104,19 +113,19 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: colors.surface,
     paddingTop: 100,
-    paddingHorizontal: 25,
+    paddingHorizontal: sizes.paddingScreen,
     justifyContent: "space-between",
   },
   textFields: {
     borderWidth: 0,
-    borderRadius: 20,
-    fontSize: 16,
-    color: "#333333",
-    backgroundColor: "#F2F2F2",
-    paddingVertical: 20,
+    borderRadius: sizes.radius.md,
+    fontSize: sizes.fontSize.md,
+    color: colors.textMain,
+    backgroundColor: colors.inputBackground,
+    paddingVertical: sizes.spacing.md,
     paddingHorizontal: 23,
-    height: 60,
+    height: sizes.inputHeight,
   },
 });

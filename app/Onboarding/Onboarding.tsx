@@ -10,9 +10,11 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { colors, sizes } from "../theme";
 import Viewone from "./Viewone";
 import Viewthree from "./Viewthree";
 import Viewtwo from "./Viewtwo";
+
 const { width } = Dimensions.get("window");
 
 const onboardingScreens = [
@@ -44,8 +46,8 @@ const OnboardingScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-      <StatusBar barStyle="default" />
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }}>
+      <StatusBar barStyle="dark-content" />
       <FlatList
         data={onboardingScreens}
         renderItem={({ item, index }) => (
@@ -64,13 +66,13 @@ const OnboardingScreen = () => {
       <View
         style={{
           alignItems: "flex-end",
-          gap: 10,
-          paddingHorizontal: 20,
+          gap: sizes.spacing.sm,
+          paddingHorizontal: sizes.paddingScreen,
           paddingBottom: 70,
         }}
       >
         <Pressable onPress={scrollToNext} style={styles.button}>
-          <Text style={{ color: "white", fontSize: 16, fontWeight: 700 }}>
+          <Text style={{ color: colors.surface, fontSize: sizes.fontSize.md, fontWeight: "700" }}>
             {currentIndex === onboardingScreens.length - 1
               ? "Create your account"
               : "Next"}
@@ -79,16 +81,16 @@ const OnboardingScreen = () => {
         <Pressable onPress={move}>
           <Text
             style={{
-              fontSize: 16,
-              color: "#3673FF",
-              fontWeight: 700,
+              fontSize: sizes.fontSize.md,
+              color: colors.secondary,
+              fontWeight: "700",
               opacity: 0.8,
             }}
           >
             {currentIndex === onboardingScreens.length - 1 ? (
               ""
             ) : (
-              <Text onPress={move}>I already have a Kolo account</Text>
+              <Text>I already have a Kolo account</Text>
             )}
           </Text>
         </Pressable>
@@ -101,11 +103,11 @@ export default OnboardingScreen;
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#333333",
-    paddingVertical: 20,
+    backgroundColor: colors.textMain,
+    paddingVertical: sizes.spacing.md,
     paddingHorizontal: 30,
-    borderRadius: 100,
-    height: 60,
+    borderRadius: sizes.radius.round,
+    height: sizes.buttonHeight,
     justifyContent: "center",
     alignItems: "center",
   },

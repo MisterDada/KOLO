@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CalendarIcon from "../../assets/images/VaultIcons/Calendar.svg";
 import TargetIcon from "../../assets/images/VaultIcons/Target.svg";
+import { colors } from "../theme";
 
 const Vault = () => {
   const vaults = [
@@ -54,14 +55,14 @@ const Vault = () => {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: 30,
-          marginTop: 20,
+          marginBottom: 10,
+          marginTop: 40,
           paddingHorizontal: 15,
         }}
       >
-        <Text style={{ fontSize: 18, fontWeight: 600 }}>Your Vaults</Text>
-        <Text style={{ fontSize: 14, color: "#3D9CFB", fontWeight: 600 }}>
-          See all
+        <Text style={{ fontSize: 22, fontWeight: 500, color: colors.textMain }}>Your Vaults</Text>
+        <Text style={{ fontSize: 14, color: colors.primary, fontWeight: 600 }}>
+          View all
         </Text>
       </View>
       {vaults.length === 0 ? (
@@ -83,16 +84,15 @@ const Vault = () => {
           >
             <Text
               style={{
-                color: "#333333",
-                opacity: 0.3,
-                fontSize: 18,
+                color: colors.textMuted,
+                fontSize: 16,
                 marginBottom: 20,
               }}
             >
               {item.name}
             </Text>
-            <Text style={{ marginBottom: 5 }}>{item.description}</Text>
-            <Text style={{ color: "#333333", fontSize: 20, marginBottom: 10 }}>
+            <Text style={{ marginBottom: 5, color: colors.textMain }}>{item.description}</Text>
+            <Text style={{ color: "#333333", fontSize: 25, marginBottom: 10 }}>
               {item.amountSaved} Saved
             </Text>
             <View
