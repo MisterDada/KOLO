@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CalendarIcon from "../../assets/images/VaultIcons/Calendar.svg";
 import TargetIcon from "../../assets/images/VaultIcons/Target.svg";
-import { colors } from "../theme";
+import { colors, sizes } from "../theme";
 
 const Vault = () => {
   const vaults = [
@@ -13,6 +13,7 @@ const Vault = () => {
       amountSaved: "N5,000",
       target: "N100,000",
       date: "12 Nov, 2026",
+      friends: ["John", "Jane"],
     },
     {
       id: 2,
@@ -29,6 +30,7 @@ const Vault = () => {
       amountSaved: "N850,000",
       target: "N1,500,000",
       date: "12 August, 2025",
+      friends: ["John", "Jane", "Bob"],
     },
     {
       id: 4,
@@ -60,9 +62,11 @@ const Vault = () => {
           paddingHorizontal: 15,
         }}
       >
-        <Text style={{ fontSize: 22, fontWeight: 500, color: colors.textMain }}>Your Vaults</Text>
-        <Text style={{ fontSize: 14, color: colors.primary, fontWeight: 600 }}>
-          View all
+        <Text style={{ fontSize: 22, fontWeight: 500, color: colors.textMain }}>
+          Your Vaults
+        </Text>
+        <Text style={{ fontSize: 16, color: colors.primary, fontWeight: 600 }}>
+          See all
         </Text>
       </View>
       {vaults.length === 0 ? (
@@ -89,9 +93,11 @@ const Vault = () => {
                 marginBottom: 20,
               }}
             >
-              {item.name}
+              {item.name.toUpperCase()}
             </Text>
-            <Text style={{ marginBottom: 5, color: colors.textMain }}>{item.description}</Text>
+            <Text style={{ marginBottom: 5, color: colors.textMain }}>
+              {item.description}
+            </Text>
             <Text style={{ color: "#333333", fontSize: 25, marginBottom: 10 }}>
               {item.amountSaved} Saved
             </Text>
@@ -115,6 +121,15 @@ const Vault = () => {
                 </Text>
               </View>
             </View>
+            <View>
+              {item.friends?.length ? (
+                <View style={styles.operationIcons}>
+                  <Text style={{ color: colors.primary }}>
+                    Friend accountability active({item.friends.length})
+                  </Text>
+                </View>
+              ) : null}
+            </View>
           </View>
         ))
       )}
@@ -131,5 +146,17 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
     paddingBottom: 100,
+  },
+  operationIcons: {
+    paddingVertical: sizes.spacing.sm - 3,
+    paddingHorizontal: sizes.spacing.md,
+    borderRadius: sizes.radius.round,
+    justifyContent: "center",
+    alignItems: "flex-start",
+    borderColor: colors.primary,
+    borderWidth: 1,
+    backgroundColor: "#c8e4ff23",
+    marginTop: 20,
+    alignSelf: "flex-start",
   },
 });

@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
   },
   button: {
     backgroundColor: colors.textMain,

@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Dimensions,
   FlatList,
@@ -16,6 +16,7 @@ import Viewthree from "./Viewthree";
 import Viewtwo from "./Viewtwo";
 
 const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("screen");
 
 const onboardingScreens = [
   (props: any) => <Viewone {...props} />,
@@ -28,9 +29,24 @@ const OnboardingScreen = () => {
   const flatListRef = useRef<FlatList>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    timeout;
+  }, []);
+
+  const timeout = setTimeout(() => {
+    if (currentIndex < onboardingScreens.length - 1) {
+      flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
+    } else if (currentIndex === onboardingScreens.length - 1) {
+      flatListRef.current?.scrollToIndex({ index: 0 });
+    } else {
+      return;
+    }
+  }, 5000);
+
   const handleScroll = (event: any) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentIndex(index);
+    clearTimeout(timeout);
   };
 
   const move = () => {
@@ -45,9 +61,26 @@ const OnboardingScreen = () => {
     }
   };
 
+  const renderDots = () => {
+    return onboardingScreens.map((_, index) => (
+      <View
+        key={index}
+        style={{
+          width: width * 0.25,
+          height: height * 0.01,
+          borderRadius: 3,
+          backgroundColor:
+            currentIndex === index ? colors.secondary : colors.primary,
+        }}
+      />
+    ));
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }}>
       <StatusBar barStyle="dark-content" />
+      <View style={styles.dotsContainer}>{renderDots()}</View>
+
       <FlatList
         data={onboardingScreens}
         renderItem={({ item, index }) => (
@@ -72,7 +105,13 @@ const OnboardingScreen = () => {
         }}
       >
         <Pressable onPress={scrollToNext} style={styles.button}>
-          <Text style={{ color: colors.surface, fontSize: sizes.fontSize.md, fontWeight: "700" }}>
+          <Text
+            style={{
+              color: colors.surface,
+              fontSize: sizes.fontSize.md,
+              fontWeight: "700",
+            }}
+          >
             {currentIndex === onboardingScreens.length - 1
               ? "Create your account"
               : "Next"}
@@ -110,5 +149,19 @@ const styles = StyleSheet.create({
     height: sizes.buttonHeight,
     justifyContent: "center",
     alignItems: "center",
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
+  },
+  dotsContainer: {
+    flexDirection: "row",
+    gap: sizes.spacing.sm,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: sizes.spacing.xl,
   },
 });
