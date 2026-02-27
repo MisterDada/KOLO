@@ -16,8 +16,6 @@ import ProfileIcon from "../../assets/images/TabNavigator/Profile.svg";
 import Vault from "../Components/Vault";
 import { colors, sizes } from "../theme";
 
-// TODO: Change widths and heights to match system ( make responsive )
-
 const Home = () => {
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
@@ -35,50 +33,52 @@ const Home = () => {
     }
   };
 
+  const username = "Mr. Dada";
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.header}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: sizes.spacing.sm,
+          }}
+        >
+          <Pressable onPress={() => router.push("/(tabs)/profile")}>
+            <View style={{ width: width * 0.1, height: height * 0.1 }}>
+              <ProfileIcon width={width * 0.1} height={height * 0.1} />
+            </View>
+          </Pressable>
+
+          <View>
+            <Text
+              style={{
+                color: colors.textMain,
+                fontSize: sizes.fontSize.md,
+                fontWeight: "500",
+              }}
+            >
+              Welcome
+            </Text>
+            <Text
+              style={{
+                color: colors.textMain,
+                fontSize: sizes.fontSize.xl,
+                fontWeight: "500",
+              }}
+            >
+              {username}
+            </Text>
+          </View>
+        </View>
+        <SettingsIcon />
+      </View>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         style={{ flex: 1, backgroundColor: colors.background }}
       >
         <StatusBar barStyle={"dark-content"} />
-        <View style={styles.header}>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: sizes.spacing.sm,
-            }}
-          >
-            <Pressable onPress={() => router.push("/(tabs)/profile")}>
-              <View style={{ width: width * 0.1, height: height * 0.1 }}>
-                <ProfileIcon width={width * 0.1} height={height * 0.1} />
-              </View>
-            </Pressable>
-
-            <View>
-              <Text
-                style={{
-                  color: colors.textMain,
-                  fontSize: sizes.fontSize.md,
-                  fontWeight: "500",
-                }}
-              >
-                Welcome,
-              </Text>
-              <Text
-                style={{
-                  color: colors.textMain,
-                  fontSize: sizes.fontSize.lg,
-                  fontWeight: "600",
-                }}
-              >
-                Dada Obafemi
-              </Text>
-            </View>
-          </View>
-          <SettingsIcon />
-        </View>
 
         <View style={{ marginBottom: sizes.spacing.sm }}>
           <View style={styles.accountInfo}>

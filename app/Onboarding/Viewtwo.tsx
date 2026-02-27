@@ -72,7 +72,6 @@ const Viewtwo = ({
               marginTop: sizes.spacing.md,
               lineHeight: 24,
               maxWidth: "80%",
-              opacity: 0.7,
               color: colors.textMain,
               transform: [{ translateY: slideAnim2 }],
             }}

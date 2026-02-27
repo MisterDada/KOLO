@@ -1,13 +1,16 @@
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from "react-native";
+import { colors, sizes } from "../theme";
 
 const Create = () => {
   const [vaultName, setVaultName] = useState<string>("");
@@ -15,7 +18,10 @@ const Create = () => {
   const [targetDate, setTargetDate] = useState<string>("");
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ backgroundColor: "white" }}>
+    <ScrollView
+      contentContainerStyle={{ flexGrow: 1 }}
+      style={{ backgroundColor: "white" }}
+    >
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.titleContainer}>
@@ -65,6 +71,22 @@ const Create = () => {
               onChangeText={setTargetDate}
               style={styles.input}
             />
+          </View>
+          <View style={{ alignItems: "flex-end" }}>
+            <Pressable
+              style={styles.button}
+              onPress={() => router.push("/(tabs)/Create/categories")}
+            >
+              <Text
+                style={{
+                  color: colors.surface,
+                  fontSize: sizes.fontSize.md,
+                  fontWeight: "700",
+                }}
+              >
+                Continue
+              </Text>
+            </Pressable>
           </View>
         </KeyboardAvoidingView>
       </View>
@@ -129,5 +151,14 @@ const styles = StyleSheet.create({
     height: 60,
     borderWidth: 1,
     borderColor: "#EEEEEE",
+  },
+  button: {
+    backgroundColor: colors.textMain,
+    paddingVertical: sizes.spacing.md,
+    paddingHorizontal: 30,
+    borderRadius: sizes.radius.round,
+    height: sizes.buttonHeight,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

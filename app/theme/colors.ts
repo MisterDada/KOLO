@@ -1,5 +1,5 @@
 export const colors = {
-  primary: "#b4daffff", // Brand blue used in links/acc info
+  primary: "#76b9fbff", // Brand blue used in links/acc info
   secondary: "#3673FF", // Darker blue
   background: "#F5F5F5", // General background
   surface: "white", // Cards, inputs (when white), headers

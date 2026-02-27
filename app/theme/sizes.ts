@@ -20,5 +20,5 @@ export const sizes = {
     xl: 24,
     xxl: 32,
     hero: 40,
-  }
+  },
 };

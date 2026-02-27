@@ -21,6 +21,7 @@ const Viewone = ({
         toValue: 0,
         useNativeDriver: true,
       }).start();
+
       Animated.timing(slideAnim2, {
         duration: 700,
         toValue: 0,

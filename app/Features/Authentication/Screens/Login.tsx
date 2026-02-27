@@ -1,15 +1,16 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    KeyboardAvoidingView,
-    Platform,
-    Pressable,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 import Back from "../../../../assets/images/Back.svg";
 import { colors, sizes } from "../../../theme";
@@ -22,6 +23,7 @@ const Login = () => {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const registerUser = async () => {
     const request: LoginRequest = {
@@ -33,17 +35,20 @@ const Login = () => {
         setEmailError("Email is required");
         setPasswordError("Password is required");
       } else {
+        setLoading(true);
         await login(request);
         // Authentication is handled by global state; layout will automatically redirect
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <KeyboardAvoidingView 
-      behavior={Platform.OS === "ios" ? "padding" : "height"} 
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={{ flex: 1, backgroundColor: colors.surface }}
     >
       <StatusBar barStyle="dark-content" />
@@ -84,7 +89,13 @@ const Login = () => {
               <Text style={{ color: colors.error }}>{passwordError}</Text>
             </View>
           </View>
-          <View style={{ alignItems: "flex-end", paddingBottom: sizes.spacing.xl, marginTop: sizes.spacing.xl }}>
+          <View
+            style={{
+              alignItems: "flex-end",
+              paddingBottom: sizes.spacing.xl,
+              marginTop: sizes.spacing.xl,
+            }}
+          >
             <Pressable
               onPress={registerUser}
               style={{
@@ -97,9 +108,19 @@ const Login = () => {
                 alignItems: "center",
               }}
             >
-              <Text style={{ color: colors.surface, fontSize: sizes.fontSize.md, fontWeight: "700" }}>
-                Continue
-              </Text>
+              {loading ? (
+                <ActivityIndicator color={colors.surface} />
+              ) : (
+                <Text
+                  style={{
+                    color: colors.surface,
+                    fontSize: sizes.fontSize.md,
+                    fontWeight: "700",
+                  }}
+                >
+                  Continue
+                </Text>
+              )}
             </Pressable>
           </View>
         </View>
