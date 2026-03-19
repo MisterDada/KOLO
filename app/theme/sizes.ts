@@ -10,6 +10,7 @@ export const sizes = {
   radius: {
     sm: 10,
     md: 20,
+    lg: 30,
     round: 100,
   },
   inputHeight: 60,
