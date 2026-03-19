@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -33,7 +34,7 @@ const Home = () => {
     }
   };
 
-  const username = "Mr. Dada";
+  const username = AsyncStorage.getItem("user");
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

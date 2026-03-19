@@ -1,16 +1,17 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    Keyboard,
-    KeyboardAvoidingView,
-    Platform,
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableWithoutFeedback,
-    View,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../../../assets/images/Back.svg";
@@ -80,7 +81,11 @@ const Email = () => {
       const passwordMatchValid = checkPasswordMatch();
 
       if (emailValid && passwordValid && passwordMatchValid) {
-        await signup(request);
+        const userCredential = await signup(request);
+        await AsyncStorage.setItem(
+          "user",
+          JSON.stringify(userCredential.displayName),
+        );
         // Authentication is handled by global state; layout will automatically redirect to inside stack
       }
     } catch (error) {
@@ -119,7 +124,13 @@ const Email = () => {
                     keyboardType="email-address"
                     value={email}
                     onChangeText={setEmail}
-                    style={[styles.textFields, { borderColor: borderColor, borderWidth: borderColor === colors.error ? 1 : 0 }]}
+                    style={[
+                      styles.textFields,
+                      {
+                        borderColor: borderColor,
+                        borderWidth: borderColor === colors.error ? 1 : 0,
+                      },
+                    ]}
                   />
                   <Text style={{ color: colors.error }}>{emailError}</Text>
                   <TextInput
@@ -129,7 +140,13 @@ const Email = () => {
                     secureTextEntry
                     value={password}
                     onChangeText={setPassword}
-                    style={[styles.textFields, { borderColor: borderColor, borderWidth: borderColor === colors.error ? 1 : 0 }]}
+                    style={[
+                      styles.textFields,
+                      {
+                        borderColor: borderColor,
+                        borderWidth: borderColor === colors.error ? 1 : 0,
+                      },
+                    ]}
                   />
                   <Text style={{ color: colors.error }}>{passwordError}</Text>
                   <TextInput
@@ -139,12 +156,26 @@ const Email = () => {
                     secureTextEntry
                     value={confirmPassword}
                     onChangeText={setConfirmPassword}
-                    style={[styles.textFields, { borderColor: borderColor, borderWidth: borderColor === colors.error ? 1 : 0 }]}
+                    style={[
+                      styles.textFields,
+                      {
+                        borderColor: borderColor,
+                        borderWidth: borderColor === colors.error ? 1 : 0,
+                      },
+                    ]}
                   />
-                  <Text style={{ color: colors.error }}>{confirmPasswordError}</Text>
+                  <Text style={{ color: colors.error }}>
+                    {confirmPasswordError}
+                  </Text>
                 </View>
               </View>
-              <View style={{ alignItems: "flex-end", paddingBottom: sizes.spacing.xl, marginTop: sizes.spacing.xl }}>
+              <View
+                style={{
+                  alignItems: "flex-end",
+                  paddingBottom: sizes.spacing.xl,
+                  marginTop: sizes.spacing.xl,
+                }}
+              >
                 <Pressable
                   onPress={() => {
                     registerUser();
@@ -160,7 +191,11 @@ const Email = () => {
                   }}
                 >
                   <Text
-                    style={{ color: colors.surface, fontSize: sizes.fontSize.md, fontWeight: "700" }}
+                    style={{
+                      color: colors.surface,
+                      fontSize: sizes.fontSize.md,
+                      fontWeight: "700",
+                    }}
                   >
                     Continue
                   </Text>

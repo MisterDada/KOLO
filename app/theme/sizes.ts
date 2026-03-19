@@ -5,6 +5,7 @@ export const sizes = {
     md: 20,
     lg: 24,
     xl: 50,
+    xxl: 100,
   },
   radius: {
     sm: 10,

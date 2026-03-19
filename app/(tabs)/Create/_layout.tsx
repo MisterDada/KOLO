@@ -4,10 +4,13 @@ export default function CreateStackLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
         animation: "fade_from_bottom",
-        gestureEnabled: false,
+        gestureEnabled: true,
+        headerShown: false,
       }}
-    />
+    >
+      <Stack.Screen name="create" />
+      <Stack.Screen name="categories" />
+    </Stack>
   );
 }
