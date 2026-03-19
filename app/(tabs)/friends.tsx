@@ -1,11 +1,27 @@
-import React from "react";
-import { SafeAreaView, View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { colors, sizes } from "@/app/theme";
+import React from "react";
+import {
+  FlatList,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 const dummyFriends = [
   { id: "1", name: "Alice Johnson", goal: "Vacation", avatarText: "AJ" },
   { id: "2", name: "David Smith", goal: "Emergency Fund", avatarText: "DS" },
   { id: "3", name: "Sarah Cole", goal: "New Car", avatarText: "SC" },
+  { id: "4", name: "John Doe", goal: "Vacation", avatarText: "JD" },
+  { id: "5", name: "Jane Smith", goal: "Emergency Fund", avatarText: "JS" },
+  { id: "6", name: "Peter Jones", goal: "New Car", avatarText: "PJ" },
+  { id: "7", name: "Mike Johnson", goal: "Vacation", avatarText: "MJ" },
+  { id: "8", name: "Dada David", goal: "Emergency Fund", avatarText: "DD" },
+  { id: "9", name: "Sarah Cole", goal: "New Car", avatarText: "SC" },
+  { id: "10", name: "Alice Johnson", goal: "Vacation", avatarText: "AJ" },
+  { id: "11", name: "David Smith", goal: "Emergency Fund", avatarText: "DS" },
+  { id: "12", name: "Sarah Cole", goal: "New Car", avatarText: "SC" },
 ];
 
 export default function Friends() {
@@ -13,11 +29,13 @@ export default function Friends() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }}>
       <View style={styles.header}>
         <Text style={styles.title}>Accountable Friends</Text>
-        <Text style={styles.subtitle}>People holding you accountable to your goals.</Text>
+        <Text style={styles.subtitle}>
+          People holding you accountable to your goals.
+        </Text>
       </View>
       <FlatList
         data={dummyFriends}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContainer}
         renderItem={({ item }) => (
           <Pressable style={styles.card}>
@@ -86,5 +104,5 @@ const styles = StyleSheet.create({
     fontSize: sizes.fontSize.sm,
     color: colors.textMuted,
     marginTop: 2,
-  }
+  },
 });

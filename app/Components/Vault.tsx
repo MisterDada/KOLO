@@ -1,5 +1,6 @@
+import { router } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import CalendarIcon from "../../assets/images/VaultIcons/Calendar.svg";
 import TargetIcon from "../../assets/images/VaultIcons/Target.svg";
 import { colors, sizes } from "../theme";
@@ -65,9 +66,13 @@ const Vault = () => {
         <Text style={{ fontSize: 22, fontWeight: 500, color: colors.textMain }}>
           Your Vaults
         </Text>
-        <Text style={{ fontSize: 16, color: colors.primary, fontWeight: 600 }}>
-          See all
-        </Text>
+        <Pressable onPress={() => router.push("/(tabs)/searchVaults")}>
+          <Text
+            style={{ fontSize: 16, color: colors.primary, fontWeight: 600 }}
+          >
+            See all
+          </Text>
+        </Pressable>
       </View>
       {vaults.length === 0 ? (
         <Text>No savings plan yet</Text>
